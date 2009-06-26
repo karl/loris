@@ -1,0 +1,12 @@
+# Automatically reload this config file if it changes
+require 'autotest/restart'
+
+require 'autotest/growl'
+
+Autotest::Growl::hide_label = true
+
+# Use remote notification to avoid problem where notifications sometime don't show
+Autotest::Growl::remote_notification = true
+
+# Don't busy wait on OSX
+require 'autotest/fsevent'       
