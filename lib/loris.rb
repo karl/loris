@@ -15,7 +15,9 @@ module Loris
       class << self
         def execute(args)
           puts 'Loris is running!'
-          puts 'example.txt altered!'
+
+          
+
         end
       end    
 

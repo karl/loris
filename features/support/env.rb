@@ -53,6 +53,10 @@ class CucumberWorld
       File.open(file_name, 'w') { |f| f << file_content }
     end
   end
+  
+  def touch_file(file_name)
+    FileUtils.touch(file_name)
+  end
  
   def background_jobs
     @background_jobs ||= []

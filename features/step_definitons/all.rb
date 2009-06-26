@@ -2,16 +2,20 @@ require 'spec/expectations'
 
 When /^I run loris(.*)$/ do |loris_opts|
   run_in_background "#{Loris::RUBY_BINARY} #{Loris::BINARY} #{loris_opts}"
-#  sleep 2
 end
 
 Given /^(?:I create )a file named "([^\"]*)"$/ do |file_name|
-  @current_dir = self_test_dir
+  @current_dir = working_dir
   create_file(file_name, '')
 end
  
 Given /^(?:I create )a file named "([^\"]*)" with:$/ do |file_name, file_content|
+  @current_dir = working_dir
   create_file(file_name, file_content)
+end
+
+When /^I modify the "([^\"]*)" file$/ do |file_name|
+  touch_file(file_name)
 end
 
 When /^I wait until loris has finished processing changes$/ do
