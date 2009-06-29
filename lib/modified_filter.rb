@@ -1,15 +1,21 @@
 class ModifiedFilter
   
-  def initialize(file_class)
+  def initialize(file_class, last_modified = nil)
     @file_class = file_class
+    @last_modified = last_modified
+    @modifieds = []
   end
   
   def filter(path)
-    return @last_modified.nil? || @file_class.mtime(path) > @last_modified
+    modified = @file_class.mtime(path)
+    @modifieds << modified
+    
+    return @last_modified.nil? || modified > @last_modified
   end
   
-  def set_last_modified(time)
-    @last_modified = time
+  def complete()
+    @last_modified = @modifieds.max
+    @modifieds = []
   end
   
 end

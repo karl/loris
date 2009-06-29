@@ -17,6 +17,10 @@ class FileFinder
       keep = @filters.inject(true) { |k, filter| k && filter.filter(path)  }
       files << path if keep
     end
+    
+    @filters.each do |filter|
+      filter.complete
+    end
 
     return files
   end
