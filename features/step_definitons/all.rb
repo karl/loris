@@ -19,7 +19,12 @@ When /^I modify the "([^\"]*)" file$/ do |file_name|
 end
 
 When /^I wait until loris has finished processing changes$/ do
-  sleep 0.5
+  len = get_background_output.length
+  new_output = ""
+  while not new_output =~ /\[Poll complete\]/
+    new_output = get_background_output[len..-1]
+    sleep 0.5
+  end
 end
 
 Then /^I should see "([^\"]*)" in the Loris output$/ do |text|

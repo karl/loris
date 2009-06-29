@@ -1,4 +1,7 @@
+require 'observer'
+
 class Poller
+  include Observable
  
   def initialize(waiter, continuer, action)
     @waiter = waiter
@@ -10,6 +13,8 @@ class Poller
     while @continuer.continue?
       @waiter.wait
       @action.action
+      changed
+      notify_observers
     end
   end
     

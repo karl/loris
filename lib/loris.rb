@@ -16,6 +16,13 @@ require 'file_actioner'
 
 include Config
 
+class DebugObserver
+  def update
+    puts '[Poll complete]'
+  end
+end
+
+
 module Loris
   BINARY = File.expand_path(File.dirname(__FILE__) + '/../bin/loris')
   LIBDIR = File.expand_path(File.dirname(__FILE__) + '/../lib')
@@ -39,19 +46,15 @@ module Loris
           p = Poller.new(w, c, a)
           
           
+          obs = DebugObserver.new
+          
+          p.add_observer(obs)
+          
           p.start()
 
         end
       end    
 
-    end
-    
-  end
-  
-  class Test
-    
-    def hello
-      return 'Hello'
     end
     
   end
