@@ -19,7 +19,7 @@ When /^I modify the "([^\"]*)" file$/ do |file_name|
 end
 
 When /^I wait until loris has finished processing changes$/ do
-  sleep 0.3
+  sleep 0.5
 end
 
 Then /^I should see "([^\"]*)" in the Loris output$/ do |text|
