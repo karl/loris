@@ -4,7 +4,7 @@ Feature: Run Loris
 		Given I run loris
 		When I create a file named "created.txt"
 		And I wait until loris has finished processing changes
-		Then I should see "created.txt altered!" in the Loris output 
+		Then I should see "created.txt' modified!" in the Loris output 
 		And I should not see any errors
 	
 	Scenario: Modifying a file triggers loris
@@ -12,5 +12,5 @@ Feature: Run Loris
 		When I run loris
 		And I modify the "modified.txt" file
 		And I wait until loris has finished processing changes
-		Then I should see "modified.txt altered!" in the Loris output 
+		Then I should see "modified.txt' modified!" in the Loris output 
 		And I should not see any errors

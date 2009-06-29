@@ -97,7 +97,6 @@ class CucumberWorld
         exec cmd
       end
     end
-    sleep 0.5
   end
  
   def terminate_background_jobs
@@ -109,11 +108,11 @@ class CucumberWorld
   end
 
  def get_background_output
-   return IO.read(@stdout_file.path)
+   return IO.read(@stdout_file.path) rescue return ""
  end
 
  def get_background_error
-   return IO.read(@stderr_file.path)
+   return IO.read(@stderr_file.path) rescue return ""
  end
  
 end
@@ -128,5 +127,10 @@ Before do
 end
  
 After do
+  err = get_background_error
+  if (err != "")
+    puts 'Background process errors:'
+    puts err
+  end  
   terminate_background_jobs
 end

@@ -13,7 +13,7 @@ describe ModifiedFilter do
     filter.filter(path).should be_true
   end
   
-  it 'should return false if file modified before givenlast modified date' do
+  it 'should return false if file modified before given last modified date' do
     path = '/path/to.file'  
     last_modified = Time.parse('2000/01/02')
     file = mock('File class')
@@ -22,7 +22,7 @@ describe ModifiedFilter do
     filter = ModifiedFilter.new(file)
     filter.set_last_modified(last_modified)
     
-    filter.filter(path).should be_false
+    filter.filter(path).should be_false 
   end
   
 end
