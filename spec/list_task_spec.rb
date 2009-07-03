@@ -10,7 +10,7 @@ describe ListTask do
     oa = ListTask.new()
     result = oa.run(@files)
 
-    result.should eql "List:\n/path/to.file\n"
+    result[:detail].should eql "/path/to.file\n"
   end
 
   it "should output the given paths using the given format string" do
@@ -19,7 +19,35 @@ describe ListTask do
     oa = ListTask.new(format_string)
     result = oa.run(@files)
 
-    result.should eql "List:\nthe file '/path/to.file' has been modified!\n"
+    result[:detail].should eql "the file '/path/to.file' has been modified!\n"
+  end
+
+  it "should return a title" do
+    oa = ListTask.new()
+    result = oa.run(@files)
+
+    result[:title].should eql "List"
+  end
+
+  it "should return success always" do
+    oa = ListTask.new()
+    result = oa.run(@files)
+
+    result[:success].should be_true
+  end
+
+  it "should return summary for 1 file" do
+    oa = ListTask.new()
+    result = oa.run(@files)
+
+    result[:summary].should eql "1 file."
+  end
+
+  it "should return summary for 3 files" do
+    oa = ListTask.new()
+    result = oa.run(['first.file','second.file','third.file'])
+
+    result[:summary].should eql "3 files."
   end
 
 end

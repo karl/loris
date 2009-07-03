@@ -16,6 +16,8 @@ require 'modified_filter'
 require 'file_filter'
 require 'jspec_task'
 require 'task_manager'
+require 'output'
+require 'Growl'
 
 
 include Config
@@ -48,7 +50,8 @@ module Loris
           ff.add_filter(ModifiedFilter.new(File))
           ff.add_filter(FileFilter.new(File))
 
-          tm = TaskManager.new($stdout)
+          growler = Growl
+          tm = TaskManager.new(Output.new($stdout, growler))
           tm.add(ListTask.new())
           tm.add(JSpecTask.new())
 

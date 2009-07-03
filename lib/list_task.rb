@@ -5,12 +5,18 @@ class ListTask
   end
   
   def run(paths)
-    result = "List:\n"
+    detail = ""
     paths.each do |path|
-      result += (@format_string % path)
-      result += "\n"
+      detail += (@format_string % path)
+      detail += "\n"
     end
-    return result
+    
+    return {
+        :success => true,
+        :title => 'List',
+        :summary => '%s file%s.' % [paths.length, paths.length == 1 ? '' : 's'],
+        :detail => detail
+      }
   end
   
 end

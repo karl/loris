@@ -4,10 +4,14 @@ class JSpecTask
   end
   
   def run(modified_files)
-    results = "JSpec:\n"
-    results += `jspec run --rhino`
+    detail = `jspec run --rhino`
 
-    return results
+    return {
+        :success => true,
+        :title => 'JSpec',
+        :summary => 'jspec summary',
+        :detail => detail
+      }
   end
   
 end

@@ -10,9 +10,9 @@ class TaskManager
   end
   
   def run(modified_files)
-    @output.puts 'Task manager:'
     @tasks.each do |task|
-      @output.puts task.run(modified_files)
+      result = task.run(modified_files)
+      @output.add_result(result)
     end
   end
   
