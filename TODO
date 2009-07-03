@@ -1,6 +1,7 @@
-* Growl support
-* Success/Failure
+* Failure or Error stops the line 
+* Growl icons (success, warning, failure, error)
 * jspec action (just modified files)
 * javascript lint action (modified + all)
 * separate thread (create new and kill old)
 * listen for interrupt
+* detect file deletion

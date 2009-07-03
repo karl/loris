@@ -6,12 +6,18 @@ class JSpecTask
   def run(modified_files)
     detail = `jspec run --rhino`
 
+    summary = make_summary(detail)
+
     return {
         :success => true,
         :title => 'JSpec',
-        :summary => 'jspec summary',
+        :summary => summary,
         :detail => detail
       }
+  end
+  
+  def make_summary(detail)
+    return gist = detail.grep( /Passes:/ ).join(" / ").strip().gsub(/\e\[[0-9]+m?/, '')
   end
   
 end
