@@ -9,6 +9,11 @@ Given /^(?:I create )a file named "([^\"]*)"$/ do |file_name|
   create_file(file_name, '')
 end
  
+Given /^(?:I create )a directory named "([^\"]*)"$/ do |dir_name|
+  @current_dir = working_dir
+  create_dir(dir_name)
+end
+ 
 Given /^(?:I create )a file named "([^\"]*)" with:$/ do |file_name, file_content|
   @current_dir = working_dir
   create_file(file_name, file_content)
@@ -27,8 +32,22 @@ When /^I wait until loris has finished processing changes$/ do
   end
 end
 
+When /^I start recording the Loris output$/ do
+  @pre_recorded_length = get_background_output.length
+end
+
+Then /^I should only see "([^\"]*)" once in the recorded output$/ do |text|
+  recorded = get_background_output[@pre_recorded_length..-1]
+  recorded.should include text
+  recorded.scan(text).length.should equal 1
+end
+
 Then /^I should see "([^\"]*)" in the Loris output$/ do |text|
   get_background_output.should include text
+end
+
+Then /^I should NOT see "([^\"]*)" in the Loris output$/ do |text|
+  get_background_output.should_not include text
 end
 
 Then /^I should not see any errors$/ do
