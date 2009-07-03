@@ -20,6 +20,7 @@ Given /^(?:I create )a file named "([^\"]*)" with:$/ do |file_name, file_content
 end
 
 When /^I modify the "([^\"]*)" file$/ do |file_name|
+  @current_dir = working_dir
   touch_file(file_name)
 end
 
@@ -34,6 +35,11 @@ end
 
 When /^I start recording the Loris output$/ do
   @pre_recorded_length = get_background_output.length
+end
+
+Then /^I should see "([^\"]*)" in the recorded output$/ do |text|
+  recorded = get_background_output[@pre_recorded_length..-1]
+  recorded.should include text
 end
 
 Then /^I should only see "([^\"]*)" once in the recorded output$/ do |text|

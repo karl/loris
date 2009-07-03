@@ -10,14 +10,17 @@ Feature: Run Loris
 	Scenario: Modifying a file triggers loris
 		Given I create a file named "modified.txt"
 		When I run loris
+		And I wait until loris has finished processing changes
+		And I start recording the Loris output
 		And I modify the "modified.txt" file
 		And I wait until loris has finished processing changes
-		Then I should see "modified.txt' modified!" in the Loris output 
+		Then I should see "modified.txt' modified!" in the recorded output 
 		And I should not see any errors
 
 	Scenario: Modified only triggered once
 		Given I create a file named "modified.txt"
 		When I run loris
+		And I wait until loris has finished processing changes
 		And I start recording the Loris output
 		And I modify the "modified.txt" file
 		And I wait until loris has finished processing changes
@@ -31,6 +34,15 @@ Feature: Run Loris
 		And I wait until loris has finished processing changes
 		Then I should NOT see "dir' modified!" in the Loris output
 		And I should not see any errors
-			
-				
+
+	# Scenario: jSpec run
+	# 	Given I create a directory named "spec"
+	# 	And I create a file named "spec/example_spec.js"
+	# 	When I run loris
+	# 	And I modify the "spec/example_spec.js" file
+	# 	And I wait until loris has finished processing changes
+	# 	Then I should see "jSpec run:" in the Loris output
+	# 	And I should not see any errors
+	# 
+	# 	
 				
