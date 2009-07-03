@@ -1,12 +1,15 @@
 class FileActioner
   
-  def initialize(file_finder, action)
+  def initialize(file_finder, task_manager)
     @file_finder = file_finder
-    @action = action
+    @task_manager = task_manager
   end
   
-  def action
-    @action.action(@file_finder.get_filtered_files)
+  def run
+    files = @file_finder.get_filtered_files
+    if files != []
+      @task_manager.run(files)
+    end
   end
   
 end

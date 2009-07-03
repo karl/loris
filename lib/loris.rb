@@ -7,13 +7,15 @@ require 'rbconfig'
 require 'find'
 
 require 'file_finder'
-require 'output_action'
+require 'list_task'
 require 'poller'
 require 'sleep_waiter'
 require 'always_continuer'
 require 'file_actioner'
 require 'modified_filter'
 require 'file_filter'
+require 'jspec_task'
+require 'task_manager'
 
 
 include Config
@@ -40,17 +42,22 @@ module Loris
 
           dir = Dir.pwd
 
-          w = SleepWaiter.new(0.1)
+          w = SleepWaiter.new(1)
           c = AlwaysContinuer.new
           ff = FileFinder.new(Find, dir)
           ff.add_filter(ModifiedFilter.new(File))
           ff.add_filter(FileFilter.new(File))
 
-          ao = OutputAction.new($stdout, "'%s' modified!")
-          a = FileActioner.new(ff, ao)          
+          tm = TaskManager.new($stdout)
+          tm.add(ListTask.new())
+          tm.add(JSpecTask.new())
+
+          a = FileActioner.new(ff, tm)          
           p = Poller.new(w, c, a)
-          obs = DebugObserver.new
-          p.add_observer(obs)
+          
+          
+          #obs = DebugObserver.new
+          #p.add_observer(obs)
 
           
           

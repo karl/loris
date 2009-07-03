@@ -1,0 +1,5 @@
+* jspec action (just modified files)
+* jspec action (all files)
+* javascript lint action (modified + all)
+* separate thread (create new and kill old)
+* listen for interrupt

@@ -12,7 +12,7 @@ class Poller
   def start
     while @continuer.continue?
       @waiter.wait
-      @action.action
+      @action.run
       changed
       notify_observers
     end
