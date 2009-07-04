@@ -7,7 +7,6 @@ class GrowlOutputDecorator
   
   def add_result(result)
     icon = get_icon(result[:state])
-    puts icon
 
     @growler.notify {
       self.title = result[:title]
