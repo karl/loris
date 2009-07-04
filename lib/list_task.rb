@@ -12,7 +12,7 @@ class ListTask
     end
     
     return {
-        :success => true,
+        :state => :success,
         :title => 'List',
         :summary => '%s file%s.' % [paths.length, paths.length == 1 ? '' : 's'],
         :detail => detail

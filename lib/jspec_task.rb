@@ -9,7 +9,7 @@ class JSpecTask
     summary = make_summary(detail)
 
     return {
-        :success => true,
+        :state => :success,
         :title => 'JSpec',
         :summary => summary,
         :detail => detail

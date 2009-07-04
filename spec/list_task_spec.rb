@@ -33,7 +33,7 @@ describe ListTask do
     oa = ListTask.new()
     result = oa.run(@files)
 
-    result[:success].should be_true
+    result[:state].should eql :success
   end
 
   it "should return summary for 1 file" do

@@ -13,6 +13,8 @@ class TaskManager
     @tasks.each do |task|
       result = task.run(modified_files)
       @output.add_result(result)
+      
+      break if [:error, :failure].include? result[:state]
     end
   end
   
