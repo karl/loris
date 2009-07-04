@@ -12,6 +12,7 @@ class GrowlOutputDecorator
       self.title = result[:title]
       self.message = result[:summary]
       self.image = icon
+      self.host = 'localhost'
     }
     
     @output.add_result result
