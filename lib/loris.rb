@@ -15,6 +15,7 @@ require 'file_actioner'
 require 'modified_filter'
 require 'file_filter'
 require 'jspec_task'
+require 'jspec_runner'
 require 'task_manager'
 require 'shell_output'
 require 'growl_output_decorator'
@@ -54,7 +55,7 @@ module Loris
           growler = Growl
           tm = TaskManager.new(GrowlOutputDecorator.new(ShellOutput.new($stdout), growler))
           tm.add(ListTask.new())
-          tm.add(JSpecTask.new())
+          tm.add(JSpecTask.new(JSpecRunner.new()))
 
           a = FileActioner.new(ff, tm)          
           p = Poller.new(w, c, a)
