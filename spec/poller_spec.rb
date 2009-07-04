@@ -12,7 +12,7 @@ describe Poller do
     @waiter = mock('waiter')
     @waiter.should_receive(:wait).ordered
     
-    @actione = mock('actioner')
+    @action = mock('actioner')
     @action.should_receive(:run).ordered {
       continue = false
     }
