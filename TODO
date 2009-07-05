@@ -5,3 +5,5 @@
 * detect file deletion
 * growl dropped messages workaround
 * Use relative paths from current dir
+* rspec task
+* cucumber task

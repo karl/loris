@@ -15,14 +15,14 @@ class ListTask
   
   def get_detail(paths)
     detail = ""
-    limit = [paths.length, 15].min
+    limit = [paths.length - 1, 14].min
     (0..limit).each do |i|
       path = paths[i]
       detail += (@format_string % path)
       detail += "\n"
     end
-    if limit < paths.length
-      detail += " - Plus #{paths.length - limit} more files."
+    if limit < paths.length - 1
+      detail += " - Plus #{(paths.length - 1) - limit} more files."
     end
 
     return detail

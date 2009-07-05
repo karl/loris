@@ -40,14 +40,14 @@ describe ListTask do
     oa = ListTask.new()
     result = oa.run(@files)
 
-    result[:summary].should eql "1 file."
+    result[:first].should eql @files[0]
   end
 
   it "should return summary for 3 files" do
     oa = ListTask.new()
     result = oa.run(['first.file','second.file','third.file'])
 
-    result[:summary].should eql "3 files."
+    result[:first].should eql "3 files."
   end
 
 end

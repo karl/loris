@@ -32,7 +32,8 @@ class JSpecTask
     
     if summary_line =~ /Failures:\s+([1-9]+)\d*/
       num_failures = $1
-      error_info = remove_colour(detail.grep(/\[31m/)[1]).strip
+      error_line = detail.grep(/\[31m/)[1] || ''
+      error_info = remove_colour(error_line).strip
       return :failure, num_failures + ' Failures', error_info
     end
 
