@@ -5,21 +5,22 @@ require 'rubygems'
 require 'bind'
 require 'rbconfig'
 require 'find'
+require 'Growl'
+
 
 require 'file_finder'
-require 'list_task'
 require 'poller'
 require 'sleep_waiter'
 require 'always_continuer'
 require 'file_actioner'
 require 'modified_filter'
 require 'file_filter'
-require 'jspec_task'
-require 'jspec_runner'
 require 'task_manager'
 require 'shell_output'
 require 'growl_output_decorator'
-require 'Growl'
+require 'tasks/list_task'
+require 'tasks/jspec_task'
+require 'tasks/jspec_runner'
 
 
 include Config
@@ -49,8 +50,8 @@ module Loris
           w = SleepWaiter.new(1)
           c = AlwaysContinuer.new
           ff = FileFinder.new(Find, dir)
-          ff.add_filter(ModifiedFilter.new(File))
           ff.add_filter(FileFilter.new(File))
+          ff.add_filter(ModifiedFilter.new(File))
 
           growler = Growl
           tm = TaskManager.new(GrowlOutputDecorator.new(ShellOutput.new($stdout), growler))

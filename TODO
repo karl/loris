@@ -1,6 +1,9 @@
-* jspec action (just modified files)
-* javascript lint action (modified + all)
+* Report first first line of failure
+* javascript lint task (all)
+* jspec task (just modified files)
+* javascript lint task (modified)
 * separate thread (create new and kill old)
 * listen for interrupt
 * detect file deletion
-* Report first first line of failure
+* growl dropped messages workaround
+* Save stderr of run tasks

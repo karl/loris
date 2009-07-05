@@ -1,4 +1,4 @@
-require 'lib/list_task.rb'
+require 'lib/tasks/list_task.rb'
 
 describe ListTask do
 

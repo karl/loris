@@ -1,4 +1,4 @@
-require 'lib/jspec_task.rb'
+require 'lib/tasks/jspec_task.rb'
 
 describe JSpecTask do
 
