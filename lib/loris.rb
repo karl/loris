@@ -18,9 +18,12 @@ require 'file_filter'
 require 'task_manager'
 require 'shell_output'
 require 'growl_output_decorator'
+require 'extension_filter'
 require 'tasks/list_task'
 require 'tasks/jspec_task'
 require 'tasks/jspec_runner'
+require 'tasks/javascript_lint_task'
+require 'tasks/javascript_lint_runner'
 
 
 include Config
@@ -56,6 +59,7 @@ module Loris
           growler = Growl
           tm = TaskManager.new(GrowlOutputDecorator.new(ShellOutput.new($stdout), growler))
           tm.add(ListTask.new())
+          tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), ExtensionFilter.new(File, 'js')))
           tm.add(JSpecTask.new(JSpecRunner.new()))
 
           a = FileActioner.new(ff, tm)          

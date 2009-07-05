@@ -1,9 +1,7 @@
-* Report first first line of failure
-* javascript lint task (all)
 * jspec task (just modified files)
 * javascript lint task (modified)
 * separate thread (create new and kill old)
 * listen for interrupt
 * detect file deletion
 * growl dropped messages workaround
-* Save stderr of run tasks
+* Use relative paths from current dir
