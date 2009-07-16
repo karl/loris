@@ -1,3 +1,7 @@
+* Growl support for windows (patch visionmedia-growl?)
+* Include growlnotify with visionmedia-growl (win and OSX)
+* Deal with filesystem exceptions
+* Deal with task exceptions
 * jspec task (just modified files)
 * javascript lint task (modified)
 * separate thread (create new and kill old)

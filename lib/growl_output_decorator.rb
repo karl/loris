@@ -8,12 +8,14 @@ class GrowlOutputDecorator
   def add_result(result)
     icon = get_icon(result[:state])
 
-    @growler.notify {
-      self.title = result[:title] + (result[:summary].nil? ? '' : ' - ' + result[:summary])
-      self.message = result[:first]
-      self.image = icon
-      self.host = 'localhost'
-    }
+    if @growler.installed?
+      @growler.notify {
+        self.title = result[:title] + (result[:summary].nil? ? '' : ' - ' + result[:summary])
+        self.message = result[:first]
+        self.image = icon
+        self.host = 'localhost'
+      }
+    end
     
     @output.add_result result
   end
