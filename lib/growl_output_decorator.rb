@@ -13,7 +13,6 @@ class GrowlOutputDecorator
         self.title = result[:title] + (result[:summary].nil? ? '' : ' - ' + result[:summary])
         self.message = result[:first]
         self.image = icon
-        self.host = 'localhost'
       }
     end
     
