@@ -20,7 +20,7 @@ class GrowlOutputDecorator
   end
   
   def get_icon(state)
-    return File.join File.expand_path(File.dirname(__FILE__)), 'icons', "#{state.to_s}.png"
+    return File.join(File.expand_path(File.dirname(__FILE__)), 'icons', "#{state.to_s}.png")
   end
   
 end

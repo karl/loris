@@ -44,9 +44,26 @@ module Loris
     
     class Main
     
+      class DummyActioner
+        
+        def initialize(actioner, stream)
+          @actioner = actioner
+          @stream = stream
+        end
+        
+        def run()
+            @actioner.run()
+            @stream.puts '[Poll complete]'
+            @stream.flush
+        end
+        
+      end
+    
       class << self
         def execute(args)
           puts 'Loris is running!'
+
+          debug = args.length > 0
 
           dir = Dir.pwd
 
@@ -56,14 +73,21 @@ module Loris
           ff.add_filter(FileFilter.new(File))
           ff.add_filter(ModifiedFilter.new(File))
 
+          so = ShellOutput.new($stdout)
+
           growler = Growl
-          tm = TaskManager.new(GrowlOutputDecorator.new(ShellOutput.new($stdout), growler))
+          go = GrowlOutputDecorator.new(so, growler)          
+          
+          tm = TaskManager.new(debug ? so : go)
           tm.add(ListTask.new())
           tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), ExtensionFilter.new(File, 'js')))
           tm.add(JSpecTask.new(JSpecRunner.new()))
 
-          a = FileActioner.new(ff, tm)          
-          p = Poller.new(w, c, a)
+          a = FileActioner.new(ff, tm)    
+          
+          da = DummyActioner.new(a, $stdout)
+                
+          p = Poller.new(w, c, debug ? da : a)
           
           
           #obs = DebugObserver.new
