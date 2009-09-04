@@ -23,17 +23,6 @@ describe Poller do
     p.start()
   end
 
-  it "should notify observers at the end of each action" do
-    obs = mock('observer')
-    obs.should_receive(:update)
-
-    p = Poller.new(@waiter, @continuer, @action)
-    
-    p.add_observer(obs)
-    
-    p.start()
-  end
-
 end
 
 

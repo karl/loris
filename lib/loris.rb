@@ -79,8 +79,8 @@ module Loris
           go = GrowlOutputDecorator.new(so, growler)          
           
           tm = TaskManager.new(debug ? so : go)
-          tm.add(ListTask.new())
-          tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), ExtensionFilter.new(File, 'js')))
+          tm.add(ListTask.new()) if debug
+          tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir)))
           tm.add(JSpecTask.new(JSpecRunner.new()))
 
           a = FileActioner.new(ff, tm)    
@@ -88,12 +88,6 @@ module Loris
           da = DummyActioner.new(a, $stdout)
                 
           p = Poller.new(w, c, debug ? da : a)
-          
-          
-          #obs = DebugObserver.new
-          #p.add_observer(obs)
-
-          
           
           p.start()
 

@@ -9,13 +9,18 @@ class TaskManager
     @tasks << task
   end
   
-  def run(modified_files)
+  def run(files)
+
     @tasks.each do |task|
-      result = task.run(modified_files)
-      @output.add_result(result)
       
-      break if [:error, :failure].include? result[:state]
+      result = task.run(files)
+      if !result.nil?
+        @output.add_result(result) 
+        break if [:error, :failure].include? result[:state]
+      end
+      
     end
+
   end
   
 end

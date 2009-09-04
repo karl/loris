@@ -4,7 +4,10 @@ class JSpecTask
     @jspec = jspec
   end
   
-  def run(modified_files)
+  def run(files)
+    all_files = files[:all]
+    mofified_files = files[:filtered]
+
     detail = @jspec.execute
 
     state, summary, first = parse_results(detail)

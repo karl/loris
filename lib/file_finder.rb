@@ -10,19 +10,22 @@ class FileFinder
     @filters << filter
   end
   
-  def get_filtered_files
-    files = []
+  def find
+    all_files = []
+    filtered_files = []
 
     @finder.find(@dir) do |path|
+      all_files << path
+      
       keep = @filters.inject(true) { |k, filter| k && filter.filter(path)  }
-      files << path if keep
+      filtered_files << path if keep
     end
     
     @filters.each do |filter|
       filter.complete
     end
 
-    return files
+    return { :all => all_files, :filtered => filtered_files }
   end
-  
+
 end

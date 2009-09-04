@@ -1,3 +1,4 @@
+* Only run jsl and rspec if you detect config files
 * javascript lint (package if not already installed?)
 * javascript lint (what to do if not config file?)
 * Use relative paths from current dir

@@ -4,12 +4,15 @@ class ListTask
     @format_string = format_string
   end
   
-  def run(paths)
+  def run(files)
+    all_files = files[:all]
+    mofified_files = files[:filtered]
+
     return {
         :state => :success,
         :title => 'List',
-        :first => paths.length == 1 ? paths[0] : '%s files.' % paths.length,
-        :detail => get_detail(paths)
+        :first => mofified_files.length == 1 ? mofified_files[0] : '%s files.' % mofified_files.length,
+        :detail => get_detail(mofified_files)
       }
   end
   

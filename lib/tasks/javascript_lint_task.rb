@@ -1,11 +1,15 @@
 class JavascriptLintTask
  
-  def initialize(javascript_lint, filter)
+  def initialize(javascript_lint)
     @javascript_lint = javascript_lint
-    @filter = filter
   end
   
-  def run(modified_files)
+  def run(files)
+    all_files = files[:all]
+    mofified_files = files[:filtered]
+    
+    return nil if (!@javascript_lint.is_configured? all_files) 
+
     detail = @javascript_lint.execute()
     
     state, summary, first = parse_result(detail)

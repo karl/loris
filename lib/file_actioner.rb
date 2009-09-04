@@ -6,8 +6,9 @@ class FileActioner
   end
   
   def run
-    files = @file_finder.get_filtered_files
-    if files != []
+    files = @file_finder.find
+    
+    if (files[:filtered] != [])
       @task_manager.run(files)
     end
   end

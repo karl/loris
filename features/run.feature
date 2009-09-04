@@ -27,10 +27,11 @@ Feature: Run Loris
 		And I wait until loris has finished processing changes
 		Then I should only see "modified.txt" once in the recorded output 
 		And I should not see any errors
-		
+
 	Scenario: Directories not included
 		Given I run loris --debug
 		When I create a directory named "dir"
 		And I wait until loris has finished processing changes
 		Then I should NOT see "dir" in the Loris output
 		And I should not see any errors
+		
