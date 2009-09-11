@@ -81,7 +81,7 @@ module Loris
           tm = TaskManager.new(debug ? so : go)
           tm.add(ListTask.new()) if debug
           tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir)))
-          tm.add(JSpecTask.new(JSpecRunner.new()))
+          tm.add(JSpecTask.new(JSpecRunner.new(dir)))
 
           a = FileActioner.new(ff, tm)    
           
