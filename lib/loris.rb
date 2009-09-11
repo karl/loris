@@ -18,9 +18,10 @@ require 'file_filter'
 require 'task_manager'
 require 'extension_filter'
 
+require 'outputs/output_collection'
 require 'outputs/shell_output'
-require 'outputs/clearing_output_decorator' 
-require 'outputs/growl_output_decorator'
+require 'outputs/console_clearing_output' 
+require 'outputs/growl_output'
 
 require 'tasks/list_task'
 require 'tasks/jspec_task'
@@ -76,13 +77,15 @@ module Loris
           ff.add_filter(FileFilter.new(File))
           ff.add_filter(ModifiedFilter.new(File))
 
-          so = ShellOutput.new($stdout)
-          co = ClearingOutputDecorator.new(so)
+          oc = OutputCollection.new()
+          oc.add(ShellOutput.new($stdout))
+          oc.add(ConsoleClearingOutput.new())
 
-          growler = Growl
-          go = GrowlOutputDecorator.new(co, growler)          
+          if (!debug)
+            oc.add(GrowlOutput.new(Growl))          
+          end
           
-          tm = TaskManager.new(debug ? co : go)
+          tm = TaskManager.new(oc)
           tm.add(ListTask.new()) if debug
           tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), dir))
           tm.add(JSpecTask.new(JSpecRunner.new(dir)))

@@ -1,12 +1,10 @@
-class GrowlOutputDecorator
+class GrowlOutput
   
-  def initialize(output, growler)
-    @output = output
+  def initialize(growler)
     @growler = growler
   end
   
   def start_run()
-    @output.start_run()
   end
 
   def add_result(result)
@@ -19,8 +17,6 @@ class GrowlOutputDecorator
         self.image = icon
       }
     end
-    
-    @output.add_result result
   end
   
   def get_icon(state)
