@@ -1,7 +1,13 @@
-* Only run jsl and rspec if you detect config files
-* javascript lint (package if not already installed?)
-* javascript lint (what to do if not config file?)
 * Use relative paths from current dir
+
+* javascript lint not installed? (package if not already installed?)
+
+* JSpec not installed? (can require as gem)
+
+* Add JS Test Driver support
+
+* Detect file deletion/directory rename
+
 * Clear stdout before each run of tasks
 * Deal with filesystem exceptions
 * Deal with task exceptions

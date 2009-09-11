@@ -1,7 +1,14 @@
 class JavascriptLintTask
  
-  def initialize(javascript_lint)
+  def initialize(javascript_lint, dir)
     @javascript_lint = javascript_lint
+    @dir = dir
+
+    # TODO: Tidy!
+    if (RUBY_PLATFORM =~ /mswin32/)
+      @dir = @dir.gsub('/', '\\')
+    end
+
   end
   
   def run(files)
@@ -13,6 +20,11 @@ class JavascriptLintTask
     detail = @javascript_lint.execute()
     
     state, summary, first = parse_result(detail)
+
+    # TODO: Tidy!
+    if (first[0, @dir.length] == @dir)
+      first = first[(@dir.length + 1)..-1]
+    end
 
     return {
         :state => state,
@@ -28,19 +40,19 @@ class JavascriptLintTask
     
     if summary_line.nil?
       # error
-      error_info = (detail + "\nUnknown Error!").to_a[0]
+      error_info = (detail + "\nUnknown Error!").to_a[0].chomp
       return :error, 'Error', error_info
     end
     
     if summary_line =~ /([1-9]+)\d*\s+error/
       num_failures = $1
-      error_info = detail.grep(/\([0-9]+\):([^:]*)Error:/)[0]
+      error_info = detail.grep(/\([0-9]+\):([^:]*)Error:/)[0].chomp
       return :failure, num_failures + ' Errors', error_info
     end
 
     if summary_line =~ /([1-9]+)\d*\s+warning/
       num_failures = $1
-      error_info = detail.grep(/\([0-9]+\)/)[0]
+      error_info = detail.grep(/\([0-9]+\)/)[0].chomp
       return :warning, num_failures + ' Warnings', error_info
     end
     
