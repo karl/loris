@@ -1,5 +1,3 @@
-* Use relative paths from current dir
-
 * javascript lint not installed? (package if not already installed?)
 
 * JSpec not installed? (can require as gem)
@@ -11,8 +9,8 @@
 * Clear stdout before each run of tasks
 * Deal with filesystem exceptions
 * Deal with task exceptions
-* jspec task (just modified files)
-* javascript lint task (modified)
+* jspec task (just modified files?)
+* javascript lint task (just modified files?)
 * separate thread (create new and kill old)
 * listen for interrupt
 * detect file deletion

@@ -5,6 +5,10 @@ class GrowlOutputDecorator
     @growler = growler
   end
   
+  def start_run()
+    @output.start_run()
+  end
+
   def add_result(result)
     icon = get_icon(result[:state])
 
@@ -20,7 +24,7 @@ class GrowlOutputDecorator
   end
   
   def get_icon(state)
-    return File.join(File.expand_path(File.dirname(__FILE__)), 'icons', "#{state.to_s}.png")
+    return File.join(File.expand_path(File.dirname(__FILE__)), '..', 'icons', "#{state.to_s}.png")
   end
   
 end
