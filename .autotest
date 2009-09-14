@@ -9,4 +9,4 @@ Autotest::Growl::hide_label = true
 Autotest::Growl::remote_notification = true
 
 # Don't busy wait on OSX
-require 'autotest/fsevent'       
+# require 'autotest/fsevent'       

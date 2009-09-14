@@ -3,7 +3,10 @@ require 'lib/tasks/list_task.rb'
 describe ListTask do
 
   before do
-    @files = ['/path/to.file']    
+    @files = {
+      :all => ['/path/to.file', '/not/in.filtered'],
+      :filtered => ['/path/to.file']    
+    }
   end
 
   it "should output the given paths" do
@@ -40,12 +43,12 @@ describe ListTask do
     oa = ListTask.new()
     result = oa.run(@files)
 
-    result[:first].should eql @files[0]
+    result[:first].should eql @files[:filtered][0]
   end
 
   it "should return summary for 3 files" do
     oa = ListTask.new()
-    result = oa.run(['first.file','second.file','third.file'])
+    result = oa.run({ :filtered => ['first.file','second.file','third.file'] })
 
     result[:first].should eql "3 files."
   end

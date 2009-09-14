@@ -1,3 +1,6 @@
+* Tidy Windows related if statements
+* Tidy JSL filename removing
+
 * javascript lint not installed? (package if not already installed?)
 
 * JSpec not installed? (can require as gem)
@@ -6,7 +9,6 @@
 
 * Detect file deletion/directory rename
 
-* Clear stdout before each run of tasks
 * Deal with filesystem exceptions
 * Deal with task exceptions
 * jspec task (just modified files?)

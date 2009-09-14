@@ -15,8 +15,9 @@ describe TaskManager do
 
   end
 
-  it "should output an run task" do
+  it "should call start_run and then output a run task" do
     @task1.should_receive(:run).with(@files).and_return(@result)
+    @output.should_receive(:start_run)
     @output.should_receive(:add_result).with(@result)
 
     task_manager = TaskManager.new(@output)
@@ -27,6 +28,7 @@ describe TaskManager do
   it "should run multiple tasks in order added" do
     @task1.should_receive(:run).ordered.with(@files).and_return(@result)
     @task2.should_receive(:run).ordered.with(@files).and_return(@result)
+    @output.should_receive(:start_run)
     @output.should_receive(:add_result).any_number_of_times
 
     task_manager = TaskManager.new(@output)
@@ -37,6 +39,7 @@ describe TaskManager do
 
   it "should stop running tasks on error state" do
     @task1.should_receive(:run).ordered.with(@files).and_return({:state => :error})
+    @output.should_receive(:start_run)
     @output.should_receive(:add_result).any_number_of_times
 
     task_manager = TaskManager.new(@output)
@@ -47,6 +50,7 @@ describe TaskManager do
 
   it "should stop running tasks on failure state" do
     @task1.should_receive(:run).ordered.with(@files).and_return({:state => :failure})
+    @output.should_receive(:start_run)
     @output.should_receive(:add_result).any_number_of_times
 
     task_manager = TaskManager.new(@output)

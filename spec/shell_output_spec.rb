@@ -1,4 +1,4 @@
-require 'lib/shell_output.rb'
+require 'lib/outputs/shell_output.rb'
 
 describe ShellOutput do
 

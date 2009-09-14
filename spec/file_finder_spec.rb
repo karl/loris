@@ -21,37 +21,52 @@ describe FileFinder do
   end
   
   it 'with no filters, should return all files' do
-    files = @ff.get_filtered_files
-    files.should eql ['/monkey/modified.txt', '/monkey/modified-2.txt', '/monkey/not-modified.txt']
+    result = { 
+      :all => ['/monkey/modified.txt', '/monkey/modified-2.txt', '/monkey/not-modified.txt'],
+      :filtered => ['/monkey/modified.txt', '/monkey/modified-2.txt', '/monkey/not-modified.txt'] 
+    }
+
+    files = @ff.find
+    files.should eql result
   end
   
   it 'with filter, should return only filtered' do
+    result = { 
+      :all => ['/monkey/modified.txt', '/monkey/modified-2.txt', '/monkey/not-modified.txt'],
+      :filtered => ['/monkey/modified.txt', '/monkey/modified-2.txt'] 
+    }
+
     @filter.should_receive(:complete)
 
     @ff.add_filter(@filter)
-    files = @ff.get_filtered_files
+    files = @ff.find
     
-    files.should eql ['/monkey/modified.txt', '/monkey/modified-2.txt']
+    files.should eql result
   end
   
   it 'should be able to accept multiple filters' do
+    result = { 
+      :all => ['/monkey/modified.txt', '/monkey/modified-2.txt', '/monkey/not-modified.txt'],
+      :filtered => ['/monkey/modified.txt'] 
+    }
+
     @filter.should_receive(:complete)
     @filter2.should_receive(:complete)
  
     @ff.add_filter(@filter)
     @ff.add_filter(@filter2)
-    files = @ff.get_filtered_files
+    files = @ff.find
     
-    files.should eql ['/monkey/modified.txt']
+    files.should eql result
   end
   
-  it 'should call filter.complete methods at the end of get_filtered_files' do
+  it 'should call filter.complete methods at the end of find' do
     @filter.should_receive(:complete)
     @filter2.should_receive(:complete)
 
     @ff.add_filter(@filter)
     @ff.add_filter(@filter2)
-    files = @ff.get_filtered_files
+    files = @ff.find
     
   end
   
