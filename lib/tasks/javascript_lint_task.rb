@@ -22,6 +22,7 @@ class JavascriptLintTask
     state, summary, first = parse_result(detail)
 
     # TODO: Tidy!
+    # Move to function/class w/ win32 related code
     if (first[0, @dir.length] == @dir)
       first = first[(@dir.length + 1)..-1]
     end
@@ -35,6 +36,7 @@ class JavascriptLintTask
       }
   end
   
+  # Move to parse class
   def parse_result(detail)
     summary_line = detail.grep( /\d+\s+error.*,\s+\d+\s+warning.*/ )[0]
     
