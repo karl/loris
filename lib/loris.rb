@@ -20,7 +20,8 @@ require 'extension_filter'
 
 require 'outputs/output_collection'
 require 'outputs/shell_output'
-require 'outputs/console_clearing_output' 
+require 'outputs/windows_console_clearing_output' 
+require 'outputs/unix_console_clearing_output' 
 require 'outputs/growl_output'
 
 require 'tasks/list_task'
@@ -65,25 +66,26 @@ module Loris
     
       class << self
         def execute(args)
-          puts 'Loris is running!'
-
+          
+          # Get config variables
           debug = args.length > 0
-
+          is_windows = RUBY_PLATFORM =~ /mswin32/
           dir = Dir.pwd
+          sleep_duration = 1
 
-          w = SleepWaiter.new(1)
+          # Create object graph
+          w = SleepWaiter.new(sleep_duration)
           c = AlwaysContinuer.new
           ff = FileFinder.new(Find, dir)
           ff.add_filter(FileFilter.new(File))
           ff.add_filter(ModifiedFilter.new(File))
 
+          cco = is_windows ? WindowsConsoleClearingOutput.new() : UnixConsoleClearingOutput.new()
+
           oc = OutputCollection.new()
           oc.add(ShellOutput.new($stdout))
-          oc.add(ConsoleClearingOutput.new())
-
-          if (!debug)
-            oc.add(GrowlOutput.new(Growl))          
-          end
+          oc.add(cco)
+          oc.add(GrowlOutput.new(Growl)) unless debug       
           
           tm = TaskManager.new(oc)
           tm.add(ListTask.new()) if debug
