@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.0.6"
+  s.version = "0.0.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Karl O'Keeffe"]
-  s.date = %q{2009-09-16}
+  s.date = %q{2009-09-17}
   s.default_executable = %q{loris}
   s.description = %q{TODO: Automatically run javascript tests}
   s.email = %q{loris@monket.net}
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "features/run.feature",
      "features/step_definitons/all.rb",
      "features/support/env.rb",
+     "lib/JsTestDriver-1.0b.jar",
      "lib/always_continuer.rb",
      "lib/extension_filter.rb",
      "lib/file_actioner.rb",
@@ -44,15 +45,18 @@ Gem::Specification.new do |s|
      "lib/icons/warning.png",
      "lib/loris.rb",
      "lib/modified_filter.rb",
-     "lib/outputs/console_clearing_output.rb",
      "lib/outputs/growl_output.rb",
      "lib/outputs/output_collection.rb",
      "lib/outputs/shell_output.rb",
+     "lib/outputs/unix_console_clearing_output.rb",
+     "lib/outputs/windows_console_clearing_output.rb",
      "lib/poller.rb",
      "lib/sleep_waiter.rb",
      "lib/task_manager.rb",
      "lib/tasks/javascript_lint_runner.rb",
      "lib/tasks/javascript_lint_task.rb",
+     "lib/tasks/js_test_driver_runner.rb",
+     "lib/tasks/js_test_driver_task.rb",
      "lib/tasks/jspec_runner.rb",
      "lib/tasks/jspec_task.rb",
      "lib/tasks/list_task.rb",
