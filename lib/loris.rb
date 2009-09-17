@@ -29,6 +29,8 @@ require 'tasks/jspec_task'
 require 'tasks/jspec_runner'
 require 'tasks/javascript_lint_task'
 require 'tasks/javascript_lint_runner'
+require 'tasks/js_test_driver_task'
+require 'tasks/js_test_driver_runner'
 
 
 include Config
@@ -72,6 +74,7 @@ module Loris
           is_windows = RUBY_PLATFORM =~ /mswin32/
           dir = Dir.pwd
           sleep_duration = 1
+          jstd_jar = File.join(LIBDIR, 'JsTestDriver-1.0b.jar')
 
           # Create object graph
           w = SleepWaiter.new(sleep_duration)
@@ -91,6 +94,7 @@ module Loris
           tm.add(ListTask.new()) if debug
           tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), dir))
           tm.add(JSpecTask.new(JSpecRunner.new(dir)))
+          tm.add(JsTestDriverTask.new(JsTestDriverRunner.new(dir, jstd_jar)))
 
           a = FileActioner.new(ff, tm)    
           

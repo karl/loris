@@ -42,19 +42,19 @@ class JavascriptLintTask
     
     if summary_line.nil?
       # error
-      error_info = (detail + "\nUnknown Error!").to_a[0].chomp
+      error_info = (detail + "\nUnknown Error!").to_a[0].strip
       return :error, 'Error', error_info
     end
     
     if summary_line =~ /([1-9]+)\d*\s+error/
       num_failures = $1
-      error_info = detail.grep(/\([0-9]+\):([^:]*)Error:/)[0].chomp
+      error_info = detail.grep(/\([0-9]+\):([^:]*)Error:/)[0].strip
       return :failure, num_failures + ' Errors', error_info
     end
 
     if summary_line =~ /([1-9]+)\d*\s+warning/
       num_failures = $1
-      error_info = detail.grep(/\([0-9]+\)/)[0].chomp
+      error_info = detail.grep(/\([0-9]+\)/)[0].strip
       return :warning, num_failures + ' Warnings', error_info
     end
     
