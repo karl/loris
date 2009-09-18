@@ -25,12 +25,14 @@ require 'outputs/unix_console_clearing_output'
 require 'outputs/growl_output'
 
 require 'tasks/list_task'
-require 'tasks/jspec_task'
-require 'tasks/jspec_runner'
-require 'tasks/javascript_lint_task'
-require 'tasks/javascript_lint_runner'
-require 'tasks/js_test_driver_task'
-require 'tasks/js_test_driver_runner'
+require 'tasks/jspec/jspec_task'
+require 'tasks/jspec/jspec_runner'
+require 'tasks/javascript_lint/javascript_lint_task'
+require 'tasks/javascript_lint/javascript_lint_runner'
+require 'tasks/js_test_driver/js_test_driver_task'
+require 'tasks/js_test_driver/js_test_driver_runner'
+require 'tasks/rspec/rspec_task'
+require 'tasks/rspec/rspec_runner'
 
 
 include Config
@@ -95,6 +97,7 @@ module Loris
           tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), dir))
           tm.add(JSpecTask.new(JSpecRunner.new(dir)))
           tm.add(JsTestDriverTask.new(JsTestDriverRunner.new(dir, jstd_jar)))
+          tm.add(RSpecTask.new(RSpecRunner.new(dir)))
 
           a = FileActioner.new(ff, tm)    
           
@@ -102,6 +105,7 @@ module Loris
                 
           p = Poller.new(w, c, debug ? da : a)
           
+          # Start!
           p.start()
 
         end
