@@ -14,14 +14,32 @@ class TaskManager
 
     @tasks.each do |task|
       
-      result = task.run(files)
-      if !result.nil?
-        @output.add_result(result) 
-        break if [:error, :failure].include? result[:state]
+      begin
+        break if !run_task(files, task)        
+      rescue Exception => ex
+        output_exception(ex)
       end
       
     end
 
+  end
+  
+  def run_task(files, task)
+    result = task.run(files)
+    if !result.nil?
+      @output.add_result(result) 
+      return !([:error, :failure].include? result[:state])
+    end    
+  end
+  
+  def output_exception(ex)
+    @output.add_result({
+      :state => :error,
+      :title => 'Task',
+      :summary => 'Exception',
+      :first => ex.message,
+      :detail => ex.backtrace
+    })
   end
   
 end
