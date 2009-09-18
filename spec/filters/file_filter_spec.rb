@@ -1,4 +1,4 @@
-require 'lib/file_filter'
+require 'lib/filters/file_filter'
 
 describe FileFilter do
   

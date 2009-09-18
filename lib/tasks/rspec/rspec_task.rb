@@ -6,9 +6,10 @@ class RSpecTask
   
   def run(files)
     all_files = files[:all]
-    mofified_files = files[:filtered]
+    modified_files = files[:filtered]
     
     return nil if (!@rspec.is_configured? all_files) 
+    return nil if (!@rspec.should_run? modified_files)
 
     detail = @rspec.execute()
     
@@ -35,7 +36,10 @@ class RSpecTask
     
     if summary_line =~ /([1-9]+) failures?/
       num_errors = $1
-      error_info = detail.grep(/FAILED/)[0].strip
+      
+      items = detail.split("\n\n")
+      
+      error_info = items[1].split("\n")[1]
       return :failure, num_errors + ' Errors', error_info
     end
 

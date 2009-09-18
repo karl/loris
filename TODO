@@ -17,6 +17,5 @@
 * separate thread (create new and kill old)
 * listen for interrupt
 * detect file deletion
-* rspec task
 * cucumber task
 * Tidy growl windows code

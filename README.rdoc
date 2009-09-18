@@ -1,1 +1,3 @@
-Work in progress...
+== Autotest for Javascript ==
+
+Run your javascript unit tests any time a file in your project changes.

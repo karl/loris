@@ -1,4 +1,4 @@
-require 'lib/modified_filter'
+require 'lib/filters/modified_filter'
 require 'time'
 
 describe ModifiedFilter do

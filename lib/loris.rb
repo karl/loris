@@ -13,10 +13,12 @@ require 'poller'
 require 'sleep_waiter'
 require 'always_continuer'
 require 'file_actioner'
-require 'modified_filter'
-require 'file_filter'
 require 'task_manager'
-require 'extension_filter'
+
+require 'filters/extension_filter'
+require 'filters/modified_filter'
+require 'filters/file_filter'
+require 'filters/ends_with_filter'
 
 require 'outputs/output_collection'
 require 'outputs/shell_output'
@@ -97,7 +99,7 @@ module Loris
           tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), dir))
           tm.add(JSpecTask.new(JSpecRunner.new(dir)))
           tm.add(JsTestDriverTask.new(JsTestDriverRunner.new(dir, jstd_jar)))
-          tm.add(RSpecTask.new(RSpecRunner.new(dir)))
+          tm.add(RSpecTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb'))))
 
           a = FileActioner.new(ff, tm)    
           
