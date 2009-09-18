@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'rake'
 require 'spec/rake/spectask'
+require 'cucumber'
+require 'cucumber/rake/task'
 
 begin
   require 'jeweler'
@@ -23,11 +25,15 @@ rescue LoadError
 end
 
 
-task :default => :spec
+task :default => [:spec, :features]
 
 Spec::Rake::SpecTask.new(:spec) do |t|
   t.spec_files = Dir.glob('spec/**/*_spec.rb')
   # t.rcov = true
+end
+
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
 end
 
 
