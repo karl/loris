@@ -11,11 +11,11 @@ class RSpecRunner
   end
   
   def is_configured?(all_files)
-    return all_files.detect { |file| @spec_filter.filter(file) }
+    return !(all_files.detect { |file| @spec_filter.filter(file) }).nil?
   end
   
   def should_run?(modified_files)
-    return modified_files.detect { |file| @ruby_filter.filter(file) }
+    return !(modified_files.detect { |file| @ruby_filter.filter(file) }).nil?
   end
   
 end

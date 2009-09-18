@@ -1,7 +1,8 @@
 class JSpecRunner
 
-  def initialize(dir)
+  def initialize(dir, filter)
     @dir = dir
+    @filter = filter
   end
   
   def execute
@@ -10,6 +11,10 @@ class JSpecRunner
   
   def is_configured?(all_files)
     return all_files.include?(@dir + '/spec/spec.rhino.js')
+  end
+  
+  def should_run?(modified_files)
+    return !(modified_files.detect { |file| @filter.filter(file) }).nil?
   end
   
 end

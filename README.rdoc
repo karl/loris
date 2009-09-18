@@ -1,3 +1,9 @@
 == Autotest for Javascript ==
 
 Run your javascript unit tests any time a file in your project changes.
+
+Runs Javascript Lint (if jsl.conf is found)
+Runs JSpec (if spec/spec.rhino.js is found)
+Runs JS Test Driver (if jsTestDriver.conf is found)
+
+Also runs RSpec (if any file ending in _spec.rb is found in the spec directory)
