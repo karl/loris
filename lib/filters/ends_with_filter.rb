@@ -1,4 +1,5 @@
-require 'extensions/string.rb'
+require 'rubygems'
+require 'extensions/string'
 
 class EndsWithFilter
   
