@@ -27,7 +27,7 @@ describe FileFinder do
     }
 
     files = @ff.find
-    files.should eql result
+    files.should == result
   end
   
   it 'with filter, should return only filtered' do
@@ -41,7 +41,7 @@ describe FileFinder do
     @ff.add_filter(@filter)
     files = @ff.find
     
-    files.should eql result
+    files.should == result
   end
   
   it 'should be able to accept multiple filters' do
@@ -57,7 +57,7 @@ describe FileFinder do
     @ff.add_filter(@filter2)
     files = @ff.find
     
-    files.should eql result
+    files.should == result
   end
   
   it 'should call filter.complete methods at the end of find' do
