@@ -6,9 +6,10 @@ class JsTestDriverTask
   
   def run(files)
     all_files = files[:all]
-    mofified_files = files[:filtered]
+    modified_files = files[:filtered]
     
     return nil if (!@js_test_driver.is_configured? all_files) 
+    return nil if (!@js_test_driver.should_run? modified_files)
 
     detail = @js_test_driver.execute()
     

@@ -34,4 +34,3 @@ Feature: Run Loris
 		And I wait until loris has finished processing changes
 		Then I should NOT see "dir" in the Loris output
 		And I should not see any errors
-		

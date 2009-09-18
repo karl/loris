@@ -52,6 +52,14 @@ Then /^I should see "([^\"]*)" in the Loris output$/ do |text|
   get_background_output.should include text
 end
 
+Then /^the Loris output should contain:$/ do |text|
+  get_background_output.should include text
+end
+
+Then /^the Loris output should NOT contain:$/ do |text|
+  get_background_output.should_not include text
+end
+
 Then /^I should NOT see "([^\"]*)" in the Loris output$/ do |text|
   get_background_output.should_not include text
 end

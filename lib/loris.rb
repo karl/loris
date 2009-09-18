@@ -91,14 +91,14 @@ module Loris
 
           oc = OutputCollection.new()
           oc.add(ShellOutput.new($stdout))
-          oc.add(cco)
+          oc.add(cco) unless debug
           oc.add(GrowlOutput.new(Growl)) unless debug       
           
           tm = TaskManager.new(oc)
           tm.add(ListTask.new()) if debug
-          tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), dir))
+          tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir, ExtensionFilter.new(File, 'js')), dir))
           tm.add(JSpecTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js'))))
-          tm.add(JsTestDriverTask.new(JsTestDriverRunner.new(dir, jstd_jar)))
+          tm.add(JsTestDriverTask.new(JsTestDriverRunner.new(dir, jstd_jar, ExtensionFilter.new(File, 'js'))))
           tm.add(RSpecTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb'))))
 
           a = FileActioner.new(ff, tm)    
