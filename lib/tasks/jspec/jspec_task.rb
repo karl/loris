@@ -6,9 +6,10 @@ class JSpecTask
   
   def run(files)
     all_files = files[:all]
-    mofified_files = files[:filtered]
+    modified_files = files[:filtered]
     
     return nil if (!@jspec.is_configured? all_files) 
+    return nil if (!@jspec.should_run? modified_files)
 
     detail = @jspec.execute
 

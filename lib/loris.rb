@@ -97,7 +97,7 @@ module Loris
           tm = TaskManager.new(oc)
           tm.add(ListTask.new()) if debug
           tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir), dir))
-          tm.add(JSpecTask.new(JSpecRunner.new(dir)))
+          tm.add(JSpecTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js'))))
           tm.add(JsTestDriverTask.new(JsTestDriverRunner.new(dir, jstd_jar)))
           tm.add(RSpecTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb'))))
 
