@@ -6,6 +6,10 @@ class JSpecRunner
     @filter = filter
   end
   
+  def name
+    return 'JSpec'
+  end
+  
   def execute
     return `jspec run --rhino --trace 2>&1`
   end

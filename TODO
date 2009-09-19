@@ -3,11 +3,9 @@
 * Tidy JSL filename removing
 
 * javascript lint not installed? (package if not already installed?)
-
 * JSpec not installed? (can require as gem)
 
-* Add JS Test Driver support
-
+* Detect file rename
 * Detect file deletion/directory rename
 
 * Deal with filesystem exceptions

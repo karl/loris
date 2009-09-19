@@ -7,6 +7,10 @@ class JsTestDriverRunner
     @filter = filter
   end
   
+  def name()
+    return 'JS Test Driver'
+  end
+  
   def execute()
     return `java -jar "#{@jar}" --config "#{@config}" --tests all --verbose 2>&1`
   end

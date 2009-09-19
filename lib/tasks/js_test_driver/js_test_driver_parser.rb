@@ -1,30 +1,5 @@
-class JsTestDriverTask
- 
-  def initialize(js_test_driver)
-    @js_test_driver = js_test_driver
-  end
+class JsTestDriverParser
   
-  def run(files)
-    all_files = files[:all]
-    modified_files = files[:filtered]
-    
-    return nil if (!@js_test_driver.is_configured? all_files) 
-    return nil if (!@js_test_driver.should_run? modified_files)
-
-    detail = @js_test_driver.execute()
-    
-    state, summary, first = parse_result(detail)
-
-    return {
-        :state => state,
-        :title => 'JS Test Driver',
-        :summary => summary,
-        :first => first,
-        :detail => detail
-      }
-  end
-  
-  # Move to parse class
   def parse_result(detail)
     summary_line = detail.grep( /Total \d+ tests/ )[0]
     

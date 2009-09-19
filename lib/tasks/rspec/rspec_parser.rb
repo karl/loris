@@ -1,30 +1,5 @@
-class RSpecTask
+class RSpecParser
  
-  def initialize(rspec)
-    @rspec = rspec
-  end
-  
-  def run(files)
-    all_files = files[:all]
-    modified_files = files[:filtered]
-    
-    return nil if (!@rspec.is_configured? all_files) 
-    return nil if (!@rspec.should_run? modified_files)
-
-    detail = @rspec.execute()
-    
-    state, summary, first = parse_result(detail)
-
-    return {
-        :state => state,
-        :title => 'RSpec',
-        :summary => summary,
-        :first => first,
-        :detail => detail
-      }
-  end
-  
-  # Move to parse class
   def parse_result(detail)
     summary_line = detail.grep( /\d+ examples?, \d+ failures?/ )[0]
     

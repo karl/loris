@@ -6,7 +6,11 @@ class RSpecRunner
     @spec_filter = spec_filter
   end
   
-  def execute()
+  def name
+    return 'RSpec'
+  end
+  
+  def execute
     return `spec . 2>&1`
   end
   

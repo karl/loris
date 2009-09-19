@@ -26,10 +26,10 @@ class TaskManager
   
   def run_task(files, task)
     result = task.run(files)
-    if !result.nil?
-      @output.add_result(result) 
-      return !([:error, :failure].include? result[:state])
-    end    
+    return true if result.nil?
+      
+    @output.add_result(result) 
+    return !([:error, :failure].include? result[:state])
   end
   
   def output_exception(ex)

@@ -6,6 +6,10 @@ class JavascriptLintRunner
     @filter = filter
   end
   
+  def name()
+    return 'Javascript Lint'
+  end
+  
   def execute()
     return `jsl -conf "#{@config}" -nologo -nofilelisting 2>&1`
   end

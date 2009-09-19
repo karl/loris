@@ -27,14 +27,15 @@ require 'outputs/unix_console_clearing_output'
 require 'outputs/growl_output'
 
 require 'tasks/list_task'
-require 'tasks/jspec/jspec_task'
+require 'tasks/command_line_task'
 require 'tasks/jspec/jspec_runner'
-require 'tasks/javascript_lint/javascript_lint_task'
+require 'tasks/jspec/jspec_parser'
 require 'tasks/javascript_lint/javascript_lint_runner'
-require 'tasks/js_test_driver/js_test_driver_task'
+require 'tasks/javascript_lint/javascript_lint_parser'
 require 'tasks/js_test_driver/js_test_driver_runner'
-require 'tasks/rspec/rspec_task'
+require 'tasks/js_test_driver/js_test_driver_parser'
 require 'tasks/rspec/rspec_runner'
+require 'tasks/rspec/rspec_parser'
 
 
 include Config
@@ -96,10 +97,10 @@ module Loris
           
           tm = TaskManager.new(oc)
           tm.add(ListTask.new()) if debug
-          tm.add(JavascriptLintTask.new(JavascriptLintRunner.new(dir, ExtensionFilter.new(File, 'js')), dir))
-          tm.add(JSpecTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js'))))
-          tm.add(JsTestDriverTask.new(JsTestDriverRunner.new(dir, jstd_jar, ExtensionFilter.new(File, 'js'))))
-          tm.add(RSpecTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb'))))
+          tm.add(CommandLineTask.new(JavascriptLintRunner.new(dir, ExtensionFilter.new(File, 'js')), JavascriptLintParser.new(dir)))
+          tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new()))
+          tm.add(CommandLineTask.new(JsTestDriverRunner.new(dir, jstd_jar, ExtensionFilter.new(File, 'js')), JsTestDriverParser.new()))
+          tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new()))
 
           a = FileActioner.new(ff, tm)    
           

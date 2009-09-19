@@ -1,30 +1,6 @@
-class JSpecTask
+class JSpecParser
  
-  def initialize(jspec)
-    @jspec = jspec
-  end
-  
-  def run(files)
-    all_files = files[:all]
-    modified_files = files[:filtered]
-    
-    return nil if (!@jspec.is_configured? all_files) 
-    return nil if (!@jspec.should_run? modified_files)
-
-    detail = @jspec.execute
-
-    state, summary, first = parse_results(detail)
-
-    return {
-        :state => state,
-        :title => 'JSpec',
-        :summary => summary,
-        :first => first,
-        :detail => detail
-      }
-  end
-  
-  def parse_results(detail)
+  def parse_result(detail)
     summary_line = detail.grep( /Passes:/ )[0]
     
     if summary_line.nil?
