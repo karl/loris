@@ -8,11 +8,11 @@ class JsTestDriverRunner
     @server = server
   end
   
-  def name()
+  def name
     return 'JS Test Driver'
   end
   
-  def execute()
+  def execute
     @server.start_if_required
     return `java -jar "#{@jar}" --config "#{@config}" --tests all --verbose 2>&1`
   end

@@ -65,5 +65,5 @@ Then /^I should NOT see "([^\"]*)" in the Loris output$/ do |text|
 end
 
 Then /^I should not see any errors$/ do
-  get_background_error.strip().should == ""
+  get_background_error.strip.should == ""
 end

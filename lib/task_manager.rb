@@ -10,7 +10,7 @@ class TaskManager
   end
   
   def run(files)
-    @output.start_run();
+    @output.start_run;
 
     @tasks.each do |task|
       

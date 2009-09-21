@@ -14,7 +14,7 @@ class ExtensionFilter
     @file_class.extname(file_name).gsub( /^\./, '' ).downcase 
   end
   
-  def complete()
+  def complete
   end
   
 end

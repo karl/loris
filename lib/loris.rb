@@ -68,8 +68,8 @@ module Loris
           @stream = stream
         end
         
-        def run()
-            @actioner.run()
+        def run
+            @actioner.run
             @stream.puts '[Poll complete]'
             @stream.flush
         end
@@ -93,19 +93,19 @@ module Loris
           ff.add_filter(FileFilter.new(File))
           ff.add_filter(ModifiedFilter.new(File))
 
-          cco = is_windows ? WindowsConsoleClearingOutput.new() : UnixConsoleClearingOutput.new()
+          cco = is_windows ? WindowsConsoleClearingOutput.new : UnixConsoleClearingOutput.new
 
-          oc = OutputCollection.new()
+          oc = OutputCollection.new
           oc.add(ShellOutput.new($stdout))
           oc.add(cco) unless debug
           oc.add(GrowlOutput.new(Growl)) unless debug       
           
           tm = TaskManager.new(oc)
-          tm.add(ListTask.new()) if debug
+          tm.add(ListTask.new) if debug
           tm.add(CommandLineTask.new(JavascriptLintRunner.new(dir, ExtensionFilter.new(File, 'js')), JavascriptLintParser.new(dir)))
-          tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new())) unless is_windows
+          tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new)) unless is_windows
           tm.add(jsTestDriverTask(dir))
-          tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new()))
+          tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new))
 
           a = FileActioner.new(ff, tm)    
           
@@ -114,15 +114,22 @@ module Loris
           p = Poller.new(w, c, debug ? da : a)
           
           # Start!
-          p.start()
+          p.start
 
         end
         
+        # Will need to be refactored into a factory
         def jsTestDriverTask(dir)
           jar = File.join(LIBDIR, 'JsTestDriver-1.0b.jar')
           is_windows = RUBY_PLATFORM =~ /mswin32/
           browser = is_windows ? 'C:/Program Files/Internet Explorer/iexplore.exe' : 'open'
           sleep_time = is_windows ? 10 : 5
+          
+          if is_windows
+            require 'windows_process'
+          else
+            require 'unix_process'
+          end
           
           return CommandLineTask.new(
             JsTestDriverRunner.new(
@@ -135,13 +142,14 @@ module Loris
                   YAML, 
                   URI
                 ), 
-                Pinger.new(), 
+                Pinger.new, 
+                is_windows ? WindowsProcess.new : UnixProcess.new,
                 jar, 
                 browser,
                 sleep_time
               )
             ), 
-            JsTestDriverParser.new()
+            JsTestDriverParser.new
           )          
         end
         

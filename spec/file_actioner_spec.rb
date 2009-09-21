@@ -15,7 +15,7 @@ describe FileActioner do
     tm.should_receive(:run).with(files)
 
     fa = FileActioner.new(ff, tm)
-    fa.run()
+    fa.run
 
   end
   
@@ -32,7 +32,7 @@ describe FileActioner do
     tm.should_not_receive(:run)
 
     fa = FileActioner.new(ff, tm)
-    fa.run()
+    fa.run
     
   end
 

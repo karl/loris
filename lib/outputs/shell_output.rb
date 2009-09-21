@@ -4,7 +4,7 @@ class ShellOutput
     @output = output
   end
   
-  def start_run()
+  def start_run
   end
   
   def add_result(result)    

@@ -1,9 +1,9 @@
 class UnixConsoleClearingOutput
   
-  def initialize()
+  def initialize
   end
   
-  def start_run()
+  def start_run
     system 'clear'
   end
   

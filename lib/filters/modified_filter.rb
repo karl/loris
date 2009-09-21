@@ -13,7 +13,7 @@ class ModifiedFilter
     return @last_modified.nil? || modified > @last_modified
   end
   
-  def complete()
+  def complete
     @last_modified = @modifieds.max
     @modifieds = []
   end

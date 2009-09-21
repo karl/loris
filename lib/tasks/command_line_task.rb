@@ -12,7 +12,7 @@ class CommandLineTask
     return nil if (!@runner.is_configured? all_files)
     return nil if (!@runner.should_run? modified_files)
  
-    detail = @runner.execute()
+    detail = @runner.execute
     
     state, summary, first = @parser.parse_result(detail)
  

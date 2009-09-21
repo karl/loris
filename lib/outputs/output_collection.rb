@@ -1,12 +1,12 @@
 class OutputCollection
  
-  def initialize()
+  def initialize
     @outputs = []
   end
 
-  def start_run()
+  def start_run
     @outputs.each do |output|
-      output.start_run()
+      output.start_run
     end
   end
   

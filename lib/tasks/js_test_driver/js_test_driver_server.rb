@@ -1,8 +1,9 @@
 class JsTestDriverServer
   
-  def initialize(config, pinger, jar, browser, sleep_time)
+  def initialize(config, pinger, process, jar, browser, sleep_time)
     @config = config
     @pinger = pinger
+    @process = process
     @jar = jar
     @browser = browser
     @sleep_time = sleep_time
@@ -22,18 +23,7 @@ class JsTestDriverServer
   
   def start_server(port)
     command = "java -jar \"#{@jar}\" --port #{port} --browser \"#{@browser}\" "
-    
-    
-    is_windows = RUBY_PLATFORM =~ /mswin32/
-    
-    if is_windows
-      require 'win32/process'
-      puts command
-      exec(command) if Process.fork.nil?
-    else
-      exec(command) if fork.nil?
-    end
-    
+    @process.create(command)
     sleep @sleep_time
   end
   

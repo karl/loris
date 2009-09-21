@@ -1,9 +1,9 @@
 class WindowsConsoleClearingOutput
   
-  def initialize()
+  def initialize
   end
   
-  def start_run()
+  def start_run
     system 'cls'
   end
   

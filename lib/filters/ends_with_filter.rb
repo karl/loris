@@ -11,7 +11,7 @@ class EndsWithFilter
     return file_name.downcase.ends_with? @text
   end
   
-  def complete()
+  def complete
   end
   
 end

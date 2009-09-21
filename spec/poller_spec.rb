@@ -20,7 +20,7 @@ describe Poller do
 
   it "should wait and call action while contunuer returns true" do
     p = Poller.new(@waiter, @continuer, @action)
-    p.start()
+    p.start
   end
 
 end

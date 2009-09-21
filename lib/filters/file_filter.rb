@@ -8,7 +8,7 @@ class FileFilter
     return @file_class.file?(path)
   end
   
-  def complete()
+  def complete
   end
   
 end
