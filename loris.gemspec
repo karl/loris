@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.0.9"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Karl O'Keeffe"]
-  s.date = %q{2009-09-18}
+  s.date = %q{2009-09-21}
   s.default_executable = %q{loris}
   s.description = %q{Automatically run javascript unit tests}
   s.email = %q{loris@monket.net}
@@ -50,18 +50,24 @@ Gem::Specification.new do |s|
      "lib/outputs/shell_output.rb",
      "lib/outputs/unix_console_clearing_output.rb",
      "lib/outputs/windows_console_clearing_output.rb",
+     "lib/pinger.rb",
      "lib/poller.rb",
      "lib/sleep_waiter.rb",
      "lib/task_manager.rb",
+     "lib/tasks/command_line_task.rb",
+     "lib/tasks/javascript_lint/javascript_lint_parser.rb",
      "lib/tasks/javascript_lint/javascript_lint_runner.rb",
-     "lib/tasks/javascript_lint/javascript_lint_task.rb",
+     "lib/tasks/js_test_driver/js_test_driver_config.rb",
+     "lib/tasks/js_test_driver/js_test_driver_parser.rb",
      "lib/tasks/js_test_driver/js_test_driver_runner.rb",
-     "lib/tasks/js_test_driver/js_test_driver_task.rb",
+     "lib/tasks/js_test_driver/js_test_driver_server.rb",
+     "lib/tasks/jspec/jspec_parser.rb",
      "lib/tasks/jspec/jspec_runner.rb",
-     "lib/tasks/jspec/jspec_task.rb",
      "lib/tasks/list_task.rb",
+     "lib/tasks/rspec/rspec_parser.rb",
      "lib/tasks/rspec/rspec_runner.rb",
-     "lib/tasks/rspec/rspec_task.rb",
+     "lib/unix_process.rb",
+     "lib/windows_process.rb",
      "loris.gemspec",
      "loris.tmproj",
      "spec/file_actioner_spec.rb",
@@ -76,8 +82,8 @@ Gem::Specification.new do |s|
      "spec/task_manager_spec.rb",
      "spec/tasks/javascript_lint/javascript_lint_runner_spec.rb",
      "spec/tasks/js_test_driver/js_test_driver_runner_spec.rb",
-     "spec/tasks/jspec/jspec_runner_spec.rb",
-     "spec/tasks/jspec/jspec_task_spec.rb"
+     "spec/tasks/jspec/jspec_parser_spec.rb",
+     "spec/tasks/jspec/jspec_runner_spec.rb"
   ]
   s.homepage = %q{http://github.com/karl/loris}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -97,8 +103,8 @@ Gem::Specification.new do |s|
      "spec/task_manager_spec.rb",
      "spec/tasks/javascript_lint/javascript_lint_runner_spec.rb",
      "spec/tasks/js_test_driver/js_test_driver_runner_spec.rb",
-     "spec/tasks/jspec/jspec_runner_spec.rb",
-     "spec/tasks/jspec/jspec_task_spec.rb"
+     "spec/tasks/jspec/jspec_parser_spec.rb",
+     "spec/tasks/jspec/jspec_runner_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
