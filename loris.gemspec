@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.0.10"
+  s.version = "0.0.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Karl O'Keeffe"]
@@ -115,14 +115,17 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<visionmedia-bind>, [">= 0.2.6"])
       s.add_runtime_dependency(%q<karl-growl>, [">= 1.0.3"])
       s.add_runtime_dependency(%q<extensions>, [">= 0.6.0"])
+      s.add_runtime_dependency(%q<win32-process>, [">= 0.6.1"])
     else
       s.add_dependency(%q<visionmedia-bind>, [">= 0.2.6"])
       s.add_dependency(%q<karl-growl>, [">= 1.0.3"])
       s.add_dependency(%q<extensions>, [">= 0.6.0"])
+      s.add_dependency(%q<win32-process>, [">= 0.6.1"])
     end
   else
     s.add_dependency(%q<visionmedia-bind>, [">= 0.2.6"])
     s.add_dependency(%q<karl-growl>, [">= 1.0.3"])
     s.add_dependency(%q<extensions>, [">= 0.6.0"])
+    s.add_dependency(%q<win32-process>, [">= 0.6.1"])
   end
 end
