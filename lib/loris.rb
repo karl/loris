@@ -35,10 +35,6 @@ require 'tasks/jspec/jspec_runner'
 require 'tasks/jspec/jspec_parser'
 require 'tasks/javascript_lint/javascript_lint_runner'
 require 'tasks/javascript_lint/javascript_lint_parser'
-require 'tasks/js_test_driver/js_test_driver_runner'
-require 'tasks/js_test_driver/js_test_driver_parser'
-require 'tasks/js_test_driver/js_test_driver_config'
-require 'tasks/js_test_driver/js_test_driver_server'
 require 'tasks/rspec/rspec_runner'
 require 'tasks/rspec/rspec_parser'
 
@@ -120,6 +116,11 @@ module Loris
         
         # Will need to be refactored into a factory
         def jsTestDriverTask(dir)
+          require 'tasks/js_test_driver/js_test_driver_runner'
+          require 'tasks/js_test_driver/js_test_driver_parser'
+          require 'tasks/js_test_driver/js_test_driver_config'
+          require 'tasks/js_test_driver/js_test_driver_server'          
+          
           jar = File.join(LIBDIR, 'JsTestDriver-1.0b.jar')
           is_windows = RUBY_PLATFORM =~ /mswin32/
           browser = is_windows ? 'C:/Program Files/Internet Explorer/iexplore.exe' : 'open'
