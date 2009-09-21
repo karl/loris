@@ -17,6 +17,7 @@ begin
     gem.add_dependency('visionmedia-bind', [">= 0.2.6"])
     gem.add_dependency('karl-growl', [">= 1.0.3"])
     gem.add_dependency('extensions', [">= 0.6.0"])
+    gem.add_dependency('win32-process', [">= 0.6.1"])
 
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
