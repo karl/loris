@@ -8,12 +8,12 @@
 * Detect file rename
 * Detect file deletion/directory rename
 
+* Factories to create tasks
+
 * Deal with filesystem exceptions
-* Deal with task exceptions
 * jspec task (just modified files?)
 * javascript lint task (just modified files?)
 * separate thread (create new and kill old)
 * listen for interrupt
-* detect file deletion
 * cucumber task
 * Tidy growl windows code

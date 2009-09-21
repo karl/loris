@@ -6,6 +6,8 @@ require 'bind'
 require 'rbconfig'
 require 'find'
 require 'Growl'
+require 'yaml'
+require 'uri'
 
 
 require 'file_finder'
@@ -14,6 +16,7 @@ require 'sleep_waiter'
 require 'always_continuer'
 require 'file_actioner'
 require 'task_manager'
+require 'pinger'
 
 require 'filters/extension_filter'
 require 'filters/modified_filter'
@@ -34,6 +37,8 @@ require 'tasks/javascript_lint/javascript_lint_runner'
 require 'tasks/javascript_lint/javascript_lint_parser'
 require 'tasks/js_test_driver/js_test_driver_runner'
 require 'tasks/js_test_driver/js_test_driver_parser'
+require 'tasks/js_test_driver/js_test_driver_config'
+require 'tasks/js_test_driver/js_test_driver_server'
 require 'tasks/rspec/rspec_runner'
 require 'tasks/rspec/rspec_parser'
 
@@ -79,7 +84,7 @@ module Loris
           is_windows = RUBY_PLATFORM =~ /mswin32/
           dir = Dir.pwd
           sleep_duration = 1
-          jstd_jar = File.join(LIBDIR, 'JsTestDriver-1.0b.jar')
+          browser = is_windows ? 'C:/Program Files/Internet Explorer/iexplore.exe' : 'open'
 
           # Create object graph
           w = SleepWaiter.new(sleep_duration)
@@ -98,8 +103,8 @@ module Loris
           tm = TaskManager.new(oc)
           tm.add(ListTask.new()) if debug
           tm.add(CommandLineTask.new(JavascriptLintRunner.new(dir, ExtensionFilter.new(File, 'js')), JavascriptLintParser.new(dir)))
-          tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new()))
-          tm.add(CommandLineTask.new(JsTestDriverRunner.new(dir, jstd_jar, ExtensionFilter.new(File, 'js')), JsTestDriverParser.new()))
+          tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new())) unless is_windows
+          tm.add(jsTestDriverTask(dir))
           tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new()))
 
           a = FileActioner.new(ff, tm)    
@@ -112,6 +117,34 @@ module Loris
           p.start()
 
         end
+        
+        def jsTestDriverTask(dir)
+          jar = File.join(LIBDIR, 'JsTestDriver-1.0b.jar')
+          is_windows = RUBY_PLATFORM =~ /mswin32/
+          browser = is_windows ? 'C:/Program Files/Internet Explorer/iexplore.exe' : 'open'
+          sleep_time = is_windows ? 10 : 5
+          
+          return CommandLineTask.new(
+            JsTestDriverRunner.new(
+              dir, 
+              jar, 
+              ExtensionFilter.new(File, 'js'),
+              JsTestDriverServer.new(
+                JsTestDriverConfig.new(
+                  dir, 
+                  YAML, 
+                  URI
+                ), 
+                Pinger.new(), 
+                jar, 
+                browser,
+                sleep_time
+              )
+            ), 
+            JsTestDriverParser.new()
+          )          
+        end
+        
       end    
 
     end

@@ -1,10 +1,11 @@
 class JsTestDriverRunner
     
-  def initialize(dir, jar, filter)
+  def initialize(dir, jar, filter, server)
     @config = dir + '/jsTestDriver.conf'
     @dir = dir
     @jar = jar
     @filter = filter
+    @server = server
   end
   
   def name()
@@ -12,6 +13,7 @@ class JsTestDriverRunner
   end
   
   def execute()
+    @server.start_if_required
     return `java -jar "#{@jar}" --config "#{@config}" --tests all --verbose 2>&1`
   end
   

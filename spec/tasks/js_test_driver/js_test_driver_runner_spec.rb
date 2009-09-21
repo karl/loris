@@ -5,6 +5,7 @@ describe JsTestDriverRunner do
   before do
     @jar = '/path/to/jsTestDriver.jar'
     @filter = mock('JS Extension Filter')
+    @server = mock('JS Test Driver Server')
   end
 
   describe "is_configured?" do
@@ -14,7 +15,7 @@ describe JsTestDriverRunner do
       dir = '/a/dir/structure'
       all_files = ['/a/dir/structure/jsTestDriver.conf']
       
-      runner = JsTestDriverRunner.new(dir, @jar, @filter)
+      runner = JsTestDriverRunner.new(dir, @jar, @filter, @server)
     
       runner.is_configured?(all_files).should be_true
       
@@ -25,7 +26,7 @@ describe JsTestDriverRunner do
       dir = '/a/dir/structure'
       all_files = ['/a/dir/structure/other.conf']
       
-      runner = JsTestDriverRunner.new(dir, @jar, @filter)
+      runner = JsTestDriverRunner.new(dir, @jar, @filter, @server)
       
       runner.is_configured?(all_files).should be_false
       
@@ -41,7 +42,7 @@ describe JsTestDriverRunner do
       modified_files = ['/a/dir/structure/another_dir/example.js']
       @filter.should_receive(:filter).and_return(true)
       
-      runner = JsTestDriverRunner.new(dir, @jar, @filter)
+      runner = JsTestDriverRunner.new(dir, @jar, @filter, @server)
       
       runner.should_run?(modified_files).should be_true
       
@@ -54,7 +55,7 @@ describe JsTestDriverRunner do
       @filter.should_receive(:filter).ordered.and_return(false)
       @filter.should_receive(:filter).ordered.and_return(true)
       
-      runner = JsTestDriverRunner.new(dir, @jar, @filter)
+      runner = JsTestDriverRunner.new(dir, @jar, @filter, @server)
       
       runner.should_run?(modified_files).should be_true
       
@@ -66,7 +67,7 @@ describe JsTestDriverRunner do
       modified_files = ['/a/dir/structure/nonjs.file']
       @filter.should_receive(:filter).ordered.and_return(false)
       
-      runner = JsTestDriverRunner.new(dir, @jar, @filter)
+      runner = JsTestDriverRunner.new(dir, @jar, @filter, @server)
       
       runner.should_run?(modified_files).should be_false
       
@@ -78,7 +79,7 @@ describe JsTestDriverRunner do
       modified_files = ['/a/dir/structure/jsTestDriver.conf']
       @filter.should_receive(:filter).ordered.and_return(false)
       
-      runner = JsTestDriverRunner.new(dir, @jar, @filter)
+      runner = JsTestDriverRunner.new(dir, @jar, @filter, @server)
       
       runner.should_run?(modified_files).should be_true
       
