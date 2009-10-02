@@ -131,7 +131,7 @@ module Loris
             browser = 'open "%1"'
           end
           
-          sleep_time = is_windows ? 10 : 5
+          sleep_time = is_windows ? 3 : 2
           
           if is_windows
             require 'windows_process'
