@@ -14,6 +14,7 @@ class JsTestDriverServer
     
     if @config.host == 'localhost' && server_not_running
       start_server(@config.port)
+      start_and_capture_browser(@config.port)
     end
   end
   
@@ -22,7 +23,14 @@ class JsTestDriverServer
   end
   
   def start_server(port)
-    command = "java -jar \"#{@jar}\" --port #{port} --browser \"#{@browser}\" "
+    command = "java -jar \"#{@jar}\" --port #{port}" #" --browser \"#{@browser}\" "
+    @process.create(command)
+    sleep @sleep_time
+  end
+  
+  def start_and_capture_browser(port)
+    capture_url = "http://localhost:#{port}/capture"
+    command = @browser.gsub('%1', capture_url)
     @process.create(command)
     sleep @sleep_time
   end

@@ -121,9 +121,16 @@ module Loris
           require 'tasks/js_test_driver/js_test_driver_config'
           require 'tasks/js_test_driver/js_test_driver_server'          
           
-          jar = File.join(LIBDIR, 'JsTestDriver-1.0b.jar')
+          jar = File.join(LIBDIR, 'js-test-driver/JsTestDriver-1.1.jar')
           is_windows = RUBY_PLATFORM =~ /mswin32/
-          browser = is_windows ? 'C:/Program Files/Internet Explorer/iexplore.exe' : 'open'
+          
+          if is_windows 
+            require 'browser_finder'
+            browser = BrowserFinder.new.getDefault
+          else
+            browser = 'open "%1"'
+          end
+          
           sleep_time = is_windows ? 10 : 5
           
           if is_windows
