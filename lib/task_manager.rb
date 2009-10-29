@@ -10,8 +10,8 @@ class TaskManager
   end
   
   def run(files)
-    @output.start_run;
-
+    @num_tasks_run = 0
+    
     @tasks.each do |task|
       
       begin
@@ -21,15 +21,23 @@ class TaskManager
       end
       
     end
-
   end
   
   def run_task(files, task)
     result = task.run(files)
     return true if result.nil?
+
+    task_run
       
     @output.add_result(result) 
     return !([:error, :failure].include? result[:state])
+  end
+  
+  def task_run
+    @num_tasks_run += 1
+    if (@num_tasks_run == 1) 
+      @output.start_run
+    end  
   end
   
   def output_exception(ex)

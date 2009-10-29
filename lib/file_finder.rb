@@ -11,6 +11,11 @@ class FileFinder
   end
   
   def find
+    
+    # Refactor in detecting changes from previous all files list
+    # Refactor in ability to ignore certain dirs/files (.svn etc)
+    # Refactor detecting modified files
+    
     all_files = []
     filtered_files = []
 

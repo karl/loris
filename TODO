@@ -1,14 +1,14 @@
-* Work out what is going on with fork in windows (running second copy of Loris?)
+* Desktop (AIR?) app with red/green indicator, and clickable filename links
+* Aptana/VS plugin with red/green indicator and clickable filename links?
 
-* Remove JsTestDriver.jar from lib dir
+* Remove JsTestDriver.jar from lib dir?
 * Tidy Windows related if statements
 * Tidy JSL filename removing
+
 
 * javascript lint not installed? (package if not already installed?)
 * JSpec not installed? (can require as gem)
 
-* Detect file rename
-* Detect file deletion/directory rename
 
 * Factories to create tasks
 

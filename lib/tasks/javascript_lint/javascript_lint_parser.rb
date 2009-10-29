@@ -30,6 +30,12 @@ class JavascriptLintParser
       return :warning, num_failures + ' Warnings', strip_dir(error_info)
     end
     
+    # Detect path errors
+    path_error = detail.grep(/unable to resolve path/)[0]
+    if (!path_error.nil?)
+      return :error, 'Path Error', path_error
+    end
+    
     return :success, 'All files are clean', ''
   end
   

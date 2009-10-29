@@ -7,3 +7,6 @@ Runs JSpec (if spec/spec.rhino.js is found)
 Runs JS Test Driver (if jsTestDriver.conf is found)
 
 Also runs RSpec (if any file ending in _spec.rb is found in the spec directory)
+
+- Requires java (to run JS Test Driver)
+- Requires .NET Framework 2.0+ (for Growl for Windows)

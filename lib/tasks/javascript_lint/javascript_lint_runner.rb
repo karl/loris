@@ -11,7 +11,7 @@ class JavascriptLintRunner
   end
   
   def execute
-    return `jsl -conf "#{@config}" -nologo -nofilelisting 2>&1`
+    return `jsl -conf "#{@config}" -nologo  2>&1`
   end
   
   def is_configured?(all_files)
