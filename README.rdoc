@@ -1,61 +1,53 @@
-## Loris
+== Loris
 
 Loris will monitor your project and run [Javascript Lint](http://www.javascriptlint.com/) and [JS Test Driver](http://code.google.com/p/js-test-driver/) whenever a file changes, it will report the results to the command line and using [Growl](http://growl.info/). If required, Loris will automatically start the JS Test Driver server and register your default browser with it.
 
-### Installing
+=== Installing
 
 Loris is hosted on [Gemcutter](http://gemcutter.org/), so you need to install their gem if you haven't already.
 
-<pre lang="bash">
-sudo gem update --system
-sudo gem install gemcutter
-gem tumble
-</pre>
+	sudo gem update --system
+	sudo gem install gemcutter
+	gem tumble
 
 Then to install Loris, just run the following:
 
-<pre lang="bash">
-sudo gem install loris
-</pre>
+	sudo gem install loris
 
 Loris has no command line options, and no configuration file (at the moment). It looks for configurations files to decide which tasks to run.
 
-### Configuring Javascript Lint
+=== Configuring Javascript Lint
 
 To enable Javascript Lint, create a `jsl.conf` file in the folder where you run Loris. This should be a standard Javascript Lint config file. If you need here is an [example Javascript Lint config file](http://mike.kruckenberg.com/archives/2009/03/configuration-options-for-javascript-lint.html)
 
 You just need to specify which files Javascipt Lint should process. For example:
 
-<pre lang="conf">
-### Files
-# Specify which files to lint
-# Use "+recurse" to enable recursion (disabled by default).
-# To add a set of files, use "+process FileName", "+process Folder\Path\*.js",
-# or "+process Folder\Path\*.htm".
-#
-+process src/js/*.js
-+process tests/js/*.js
-</pre>
+	### Files
+	# Specify which files to lint
+	# Use "+recurse" to enable recursion (disabled by default).
+	# To add a set of files, use "+process FileName", "+process Folder\Path\*.js",
+	# or "+process Folder\Path\*.htm".
+	#
+	+process src/js/*.js
+	+process tests/js/*.js
 
 If no `jsl.conf` file is found, the Javascript Lint task is silently skipped.
 
 
-### Configuring JS Test Driver
+=== Configuring JS Test Driver
 
 To enable JS Test Driver, create a `jsTestDriver.conf` file in the folder where you run Loris. This should be a standard [JS Test Driver config file](http://code.google.com/p/js-test-driver/wiki/ConfigurationFile).
 
 This should specify which files JS Test Driver should process, and how it connects to the JS Test Driver server. For example:
 
-<pre lang="yaml">
-server: http://localhost:9876
+	server: http://localhost:9876
 
-load:
-  - tests/qunit/equiv.js
-  - tests/qunit/QUnitAdapter.js
+	load:
+	  - tests/qunit/equiv.js
+	  - tests/qunit/QUnitAdapter.js
 
-  - src/js/*.js
-  - tests/js/*.js
-</pre>
+	  - src/js/*.js
+	  - tests/js/*.js
 
 If no `jsTestDriver.conf` file is found, the JS Test Driver task is silently skipped.
 
@@ -63,39 +55,35 @@ To make it really simple to run JS Test Driver tests, if the server is set to ru
 
 This makes it a one step process to get automated tests up and running.
 
-### Running
+=== Running
 
 To run, open a command line window, navigate to the root folder of your project, and run:
 
-<pre lang="bash">
-loris
-</pre>
+	loris
 
 Loris will run Javascript Lint, and JS Test Driver tasks (if it finds their configuration files), and will output the results on the command line.
 
 #### Example output
-<pre lang="text">
-Javascript Lint
-success
-All files are clean
+	Javascript Lint
+	success
+	All files are clean
 
-0 error(s), 0 warning(s)
-JS Test Driver
-success
-All tests pass
-[PASSED] GreeterTest.testGreet
-  [LOG] JsTestDriver Hello World!
-[PASSED] GreeterTest.testGoodbye
-[PASSED] GreeterTest.testSetName
-[PASSED] GreeterTest.testSetNameAndNameParamter
-[PASSED] Asserts.test OK true succeeds
-[PASSED] Asserts.test Equals succeeds
-  [LOG] about to call assertEquals
-[PASSED] Asserts.test Same assert succeeds
-[PASSED] Lifecycle.test Setup and Teardown are run, and can contain assertions
-Total 8 tests (Passed: 8; Fails: 0; Errors: 0) (3.00 ms)
-  Firefox 1.9.1.4 MacIntel: Run 8 tests (Passed: 8; Fails: 0; Errors 0) (3.00 ms)
-</pre>
+	0 error(s), 0 warning(s)
+	JS Test Driver
+	success
+	All tests pass
+	[PASSED] GreeterTest.testGreet
+	  [LOG] JsTestDriver Hello World!
+	[PASSED] GreeterTest.testGoodbye
+	[PASSED] GreeterTest.testSetName
+	[PASSED] GreeterTest.testSetNameAndNameParamter
+	[PASSED] Asserts.test OK true succeeds
+	[PASSED] Asserts.test Equals succeeds
+	  [LOG] about to call assertEquals
+	[PASSED] Asserts.test Same assert succeeds
+	[PASSED] Lifecycle.test Setup and Teardown are run, and can contain assertions
+	Total 8 tests (Passed: 8; Fails: 0; Errors: 0) (3.00 ms)
+	  Firefox 1.9.1.4 MacIntel: Run 8 tests (Passed: 8; Fails: 0; Errors 0) (3.00 ms)
 
 Every time you make a change to a Javascript file, or a configuration file, Loris will automatically re-run Javascript Lint and JS Test Driver. So you can instant feedback on your changes.
 
@@ -103,13 +91,13 @@ Loris will clear the command line when re-running tasks. So the latest run is al
 
 Loris will also report a summary of each task using [Growl](http://growl.info/) (if it is installed). This allows you to get quick feedback without needing to refer back to the command line on every change.
 
-### Requirements
+=== Requirements
 
 JS Test Driver is written in Java, so you will need to have Java installed to run it. 
 
 To get Growl notifications, you will need to install either [Growl for OSX](http://growl.info/) or [Growl for Windows](http://www.growlforwindows.com/). Growl for Windows requires the [.NET Framework 2.0+](http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5&displaylang=en).
 
-### Caveat
+=== Caveat
 
 Loris is pretty limited at the moment, I just wired up the basics to get it running for a work project. 
 
