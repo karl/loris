@@ -121,7 +121,7 @@ module Loris
           require 'tasks/js_test_driver/js_test_driver_config'
           require 'tasks/js_test_driver/js_test_driver_server'          
           
-          jar = File.join(LIBDIR, 'js-test-driver/JsTestDriver-1.1.jar')
+          jar = File.join(LIBDIR, 'js-test-driver/JsTestDriver-1.2.jar')
           is_windows = RUBY_PLATFORM =~ /mswin32/
           
           if is_windows 

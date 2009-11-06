@@ -1,3 +1,5 @@
+* Keep track of number of tests run/files linted. Let user know if this drops
+
 * Desktop (AIR?) app with red/green indicator, and clickable filename links
 * Aptana/VS plugin with red/green indicator and clickable filename links?
 

@@ -9,8 +9,7 @@ class JsTestDriverParser
       return :error, 'Error', error_info
     end
 
-    lost_a_browser = !detail.grep(/The browser \d+ is not available anymore/)[0].nil?
-    if summary_line =~ /Total 0 tests/ && lost_a_browser
+    if summary_line =~ /Total 0 tests/
       return :error, 'No Tests Run', 'You may not have a browser connected to JS Test Driver'
     end    
     
