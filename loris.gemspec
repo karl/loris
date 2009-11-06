@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.0.16"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Karl O'Keeffe"]
-  s.date = %q{2009-10-29}
+  s.date = %q{2009-11-06}
   s.default_executable = %q{loris}
   s.description = %q{Automatically run javascript unit tests}
   s.email = %q{loris@monket.net}
@@ -44,8 +44,10 @@ Gem::Specification.new do |s|
      "lib/icons/info.png",
      "lib/icons/success.png",
      "lib/icons/warning.png",
-     "lib/js-test-driver/JsTestDriver-1.1.jar",
-     "lib/js-test-driver/plugins/coverage-1.1.jar",
+     "lib/javascript-lint/jsl",
+     "lib/javascript-lint/jsl.exe",
+     "lib/js-test-driver/JsTestDriver-1.2.jar",
+     "lib/js-test-driver/plugins/coverage-1.2.jar",
      "lib/loris.rb",
      "lib/outputs/growl_output.rb",
      "lib/outputs/output_collection.rb",
