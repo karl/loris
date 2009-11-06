@@ -1,10 +1,10 @@
 == Loris
 
-Loris will monitor your project and run [Javascript Lint](http://www.javascriptlint.com/) and [JS Test Driver](http://code.google.com/p/js-test-driver/) whenever a file changes, it will report the results to the command line and using [Growl](http://growl.info/). If required, Loris will automatically start the JS Test Driver server and register your default browser with it.
+Loris will monitor your project and run Javascript Lint (http://www.javascriptlint.com/) and JS Test Driver (http://code.google.com/p/js-test-driver/) whenever a file changes, it will report the results to the command line and using Growl (http://growl.info/). If required, Loris will automatically start the JS Test Driver server and register your default browser with it.
 
 === Installing
 
-Loris is hosted on [Gemcutter](http://gemcutter.org/), so you need to install their gem if you haven't already.
+Loris is hosted on Gemcutter (http://gemcutter.org/), so you need to install their gem if you haven't already.
 
 	sudo gem update --system
 	sudo gem install gemcutter
@@ -18,7 +18,7 @@ Loris has no command line options, and no configuration file (at the moment). It
 
 === Configuring Javascript Lint
 
-To enable Javascript Lint, create a `jsl.conf` file in the folder where you run Loris. This should be a standard Javascript Lint config file. If you need here is an [example Javascript Lint config file](http://mike.kruckenberg.com/archives/2009/03/configuration-options-for-javascript-lint.html)
+To enable Javascript Lint, create a `jsl.conf` file in the folder where you run Loris. This should be a standard Javascript Lint config file. If you need here is an example Javascript Lint config file (http://mike.kruckenberg.com/archives/2009/03/configuration-options-for-javascript-lint.html)
 
 You just need to specify which files Javascipt Lint should process. For example:
 
@@ -36,7 +36,7 @@ If no `jsl.conf` file is found, the Javascript Lint task is silently skipped.
 
 === Configuring JS Test Driver
 
-To enable JS Test Driver, create a `jsTestDriver.conf` file in the folder where you run Loris. This should be a standard [JS Test Driver config file](http://code.google.com/p/js-test-driver/wiki/ConfigurationFile).
+To enable JS Test Driver, create a `jsTestDriver.conf` file in the folder where you run Loris. This should be a standard JS Test Driver config file (http://code.google.com/p/js-test-driver/wiki/ConfigurationFile).
 
 This should specify which files JS Test Driver should process, and how it connects to the JS Test Driver server. For example:
 
@@ -89,13 +89,13 @@ Every time you make a change to a Javascript file, or a configuration file, Lori
 
 Loris will clear the command line when re-running tasks. So the latest run is always at the top of you command line.
 
-Loris will also report a summary of each task using [Growl](http://growl.info/) (if it is installed). This allows you to get quick feedback without needing to refer back to the command line on every change.
+Loris will also report a summary of each task using Growl (http://growl.info/) (if it is installed). This allows you to get quick feedback without needing to refer back to the command line on every change.
 
 === Requirements
 
 JS Test Driver is written in Java, so you will need to have Java installed to run it. 
 
-To get Growl notifications, you will need to install either [Growl for OSX](http://growl.info/) or [Growl for Windows](http://www.growlforwindows.com/). Growl for Windows requires the [.NET Framework 2.0+](http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5&displaylang=en).
+To get Growl notifications, you will need to install either Growl for OSX (http://growl.info/) or Growl for Windows (http://www.growlforwindows.com/). Growl for Windows requires the .NET Framework 2.0+ (http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5&displaylang=en).
 
 === Caveat
 
@@ -107,4 +107,4 @@ Loris only comes with a few tasks (Javascript Lint, JS Test Driver, JSpec, and R
 
 It comes packaged with a version of Javascript Lint, and JS Test Driver, and will use it's own versions. It only includes the OSX and Windows versions of Javascript Lint.
 
-If you want to modify the code, just fork the [Loris github project](http://github.com/karl/loris)
+If you want to modify the code, just fork the Loris github project (http://github.com/karl/loris)
