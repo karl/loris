@@ -98,7 +98,7 @@ module Loris
           
           tm = TaskManager.new(oc)
           tm.add(ListTask.new) if debug
-          tm.add(CommandLineTask.new(JavascriptLintRunner.new(dir, ExtensionFilter.new(File, 'js')), JavascriptLintParser.new(dir)))
+          tm.add(javascript_lint_task(dir))
           tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new)) unless is_windows
           tm.add(jsTestDriverTask(dir))
           tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new))
@@ -112,6 +112,21 @@ module Loris
           # Start!
           p.start
 
+        end
+        
+        # Refactor into factory
+        def javascript_lint_task(dir)
+          is_windows = RUBY_PLATFORM =~ /mswin32/
+          binary = File.join(LIBDIR, 'javascript-lint' , is_windows ? 'jsl.exe' : 'jsl');
+          
+          return CommandLineTask.new(
+            JavascriptLintRunner.new(
+              binary,
+              dir, 
+              ExtensionFilter.new(File, 'js')
+            ), 
+            JavascriptLintParser.new(dir)
+          )          
         end
         
         # Will need to be refactored into a factory

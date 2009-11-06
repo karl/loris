@@ -1,6 +1,7 @@
 class JavascriptLintRunner
   
-  def initialize(dir, filter)
+  def initialize(binary, dir, filter)
+    @binary = binary
     @config = dir + '/jsl.conf'
     @dir = dir
     @filter = filter
@@ -11,7 +12,7 @@ class JavascriptLintRunner
   end
   
   def execute
-    return `jsl -conf "#{@config}" -nologo -nofilelisting 2>&1`
+    return `#{@binary} -conf "#{@config}" -nologo -nofilelisting 2>&1`
   end
   
   def is_configured?(all_files)

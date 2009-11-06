@@ -10,10 +10,11 @@ describe JavascriptLintRunner do
 
     it "should return true if jsl.conf exists" do
 
+      binary = 'jsl'
       dir = '/a/dir/structure'
       all_files = ['/a/dir/structure/jsl.conf']
       
-      runner = JavascriptLintRunner.new(dir, @filter)
+      runner = JavascriptLintRunner.new(binary, dir, @filter)
       
       runner.is_configured?(all_files).should be_true
       
@@ -21,10 +22,11 @@ describe JavascriptLintRunner do
 
     it "should return false if jsl.conf does not exists" do
 
+      binary = 'jsl'
       dir = '/a/dir/structure'
       all_files = ['/a/dir/structure/other.conf']
       
-      runner = JavascriptLintRunner.new(dir, @filter)
+      runner = JavascriptLintRunner.new(binary, dir, @filter)
       
       runner.is_configured?(all_files).should be_false
       
@@ -36,11 +38,12 @@ describe JavascriptLintRunner do
 
     it "should return true if a file ends with a js extension" do
 
+      binary = 'jsl'
       dir = '/a/dir/structure'
       modified_files = ['/a/dir/structure/another_dir/example.js']
       @filter.should_receive(:filter).and_return(true)
       
-      runner = JavascriptLintRunner.new(dir, @filter)
+      runner = JavascriptLintRunner.new(binary, dir, @filter)
       
       runner.should_run?(modified_files).should be_true
       
@@ -48,12 +51,13 @@ describe JavascriptLintRunner do
 
     it "should return true if any file ends with a js extension" do
 
+      binary = 'jsl'
       dir = '/a/dir/structure'
       modified_files = ['/a/dir/structure/nonjs.file', '/a/dir/structure/another_dir/example.js']
       @filter.should_receive(:filter).ordered.and_return(false)
       @filter.should_receive(:filter).ordered.and_return(true)
       
-      runner = JavascriptLintRunner.new(dir, @filter)
+      runner = JavascriptLintRunner.new(binary, dir, @filter)
       
       runner.should_run?(modified_files).should be_true
       
@@ -61,11 +65,12 @@ describe JavascriptLintRunner do
 
     it "should return false if no file ends with a js extension" do
 
+      binary = 'jsl'
       dir = '/a/dir/structure'
       modified_files = ['/a/dir/structure/nonjs.file']
       @filter.should_receive(:filter).ordered.and_return(false)
       
-      runner = JavascriptLintRunner.new(dir, @filter)
+      runner = JavascriptLintRunner.new(binary, dir, @filter)
       
       runner.should_run?(modified_files).should be_false
       
@@ -73,11 +78,12 @@ describe JavascriptLintRunner do
 
     it "should return true if the jsl.conf file was modified" do
 
+      binary = 'jsl'
       dir = '/a/dir/structure'
       modified_files = ['/a/dir/structure/jsl.conf']
       @filter.should_receive(:filter).ordered.and_return(false)
       
-      runner = JavascriptLintRunner.new(dir, @filter)
+      runner = JavascriptLintRunner.new(binary, dir, @filter)
       
       runner.should_run?(modified_files).should be_true
       

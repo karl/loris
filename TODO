@@ -8,7 +8,6 @@
 * Tidy JSL filename removing
 
 
-* javascript lint not installed? (package if not already installed?)
 * JSpec not installed? (can require as gem)
 
 
