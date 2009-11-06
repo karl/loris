@@ -3,7 +3,6 @@
 * Desktop (AIR?) app with red/green indicator, and clickable filename links
 * Aptana/VS plugin with red/green indicator and clickable filename links?
 
-* Remove JsTestDriver.jar from lib dir?
 * Tidy Windows related if statements
 * Tidy JSL filename removing
 
