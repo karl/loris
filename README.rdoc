@@ -13,6 +13,10 @@ Loris is hosted on Gemcutter (http://gemcutter.org/), so you need to install the
 Then to install Loris, just run the following:
 
 	sudo gem install loris
+	
+On Windows you will also need to install the win32-process gem
+
+	gem install win32-process
 
 Loris has no command line options, and no configuration file (at the moment). It looks for configurations files to decide which tasks to run.
 
