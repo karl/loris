@@ -14,7 +14,7 @@ begin
     gem.homepage = "http://github.com/karl/loris"
     gem.authors = ["Karl O'Keeffe"]
 
-    gem.add_dependency('visionmedia-bind', [">= 0.2.6"])
+    gem.add_dependency('bind', [">= 0.2.6"])
     gem.add_dependency('karl-growl', [">= 1.0.6"])
     gem.add_dependency('extensions', [">= 0.6.0"])
 
