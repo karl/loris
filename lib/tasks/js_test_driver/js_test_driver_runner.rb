@@ -14,7 +14,7 @@ class JsTestDriverRunner
   
   def execute
     @server.start_if_required
-    return `java -jar "#{@jar}" --config "#{@config}" --reset˝˝ --tests all 2>&1`
+    return `java -jar "#{@jar}" --config "#{@config}" --reset --tests all 2>&1`
   end
   
   def is_configured?(all_files)
