@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.1.4"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Karl O'Keeffe"]
-  s.date = %q{2010-07-07}
+  s.date = %q{2010-07-11}
   s.default_executable = %q{loris}
   s.description = %q{Automatically run javascript unit tests}
   s.email = %q{loris@monket.net}
@@ -34,17 +34,23 @@ Gem::Specification.new do |s|
      "features/support/env.rb",
      "lib/always_continuer.rb",
      "lib/browser_finder.rb",
+     "lib/directory_finder.rb",
      "lib/file_actioner.rb",
      "lib/file_finder.rb",
      "lib/filters/ends_with_filter.rb",
      "lib/filters/extension_filter.rb",
      "lib/filters/file_filter.rb",
      "lib/filters/modified_filter.rb",
+     "lib/filters/starts_with_filter.rb",
      "lib/icons/error.png",
      "lib/icons/failure.png",
      "lib/icons/info.png",
      "lib/icons/success.png",
      "lib/icons/warning.png",
+     "lib/jasmine-node/LICENSE",
+     "lib/jasmine-node/lib/jasmine/index.js",
+     "lib/jasmine-node/lib/jasmine/jasmine-0.10.2.js",
+     "lib/jasmine-node/specs.js",
      "lib/javascript-lint/jsl",
      "lib/javascript-lint/jsl.exe",
      "lib/js-test-driver/JsTestDriver-1.2.jar",
@@ -59,7 +65,11 @@ Gem::Specification.new do |s|
      "lib/poller.rb",
      "lib/sleep_waiter.rb",
      "lib/task_manager.rb",
+     "lib/tasks/coffeescript/coffeescript_parser.rb",
+     "lib/tasks/coffeescript/coffeescript_runner.rb",
      "lib/tasks/command_line_task.rb",
+     "lib/tasks/jasmine_node/jasmine_node_parser.rb",
+     "lib/tasks/jasmine_node/jasmine_node_runner.rb",
      "lib/tasks/javascript_lint/javascript_lint_parser.rb",
      "lib/tasks/javascript_lint/javascript_lint_runner.rb",
      "lib/tasks/js_test_driver/js_test_driver_config.rb",
@@ -93,7 +103,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/karl/loris}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Automatically run javascript unit tests}
   s.test_files = [
     "spec/file_actioner_spec.rb",
@@ -116,7 +126,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<bind>, [">= 0.2.6"])
       s.add_runtime_dependency(%q<karl-growl>, [">= 1.0.6"])
       s.add_runtime_dependency(%q<extensions>, [">= 0.6.0"])
