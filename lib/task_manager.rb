@@ -21,6 +21,7 @@ class TaskManager
       end
       
     end
+    
   end
   
   def run_task(files, task)
@@ -28,7 +29,7 @@ class TaskManager
     return true if result.nil?
 
     task_run
-      
+    
     @output.add_result(result) 
     return !([:error, :failure].include? result[:state])
   end

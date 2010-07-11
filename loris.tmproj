@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>lib/file_actioner.rb</string>
+	<string>.gitignore</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -23,6 +23,20 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
+		<key>.gitignore</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>Rakefile</key>
 		<dict>
 			<key>caret</key>
@@ -56,9 +70,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -87,6 +101,20 @@
 				<integer>47</integer>
 				<key>line</key>
 				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>lib/loris.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -133,7 +161,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>lib/tasks/command_line_task.rb</key>
 		<dict>
@@ -253,19 +281,12 @@
 	<key>openDocuments</key>
 	<array>
 		<string>TODO</string>
-		<string>lib/tasks/javascript_lint/javascript_lint_parser.rb</string>
-		<string>lib/tasks/js_test_driver/js_test_driver_parser.rb</string>
-		<string>lib/tasks/js_test_driver/js_test_driver_runner.rb</string>
-		<string>lib/outputs/growl_output.rb</string>
-		<string>lib/outputs/output_collection.rb</string>
-		<string>lib/filters/ends_with_filter.rb</string>
-		<string>lib/tasks/javascript_lint/javascript_lint_runner.rb</string>
-		<string>Rakefile</string>
-		<string>lib/task_manager.rb</string>
-		<string>lib/file_finder.rb</string>
 		<string>lib/file_actioner.rb</string>
-		<string>lib/tasks/list_task.rb</string>
-		<string>lib/tasks/command_line_task.rb</string>
+		<string>Rakefile</string>
+		<string>.gitignore</string>
+		<string>lib/loris.rb</string>
+		<string>lib/file_finder.rb</string>
+		<string>lib/task_manager.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>

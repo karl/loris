@@ -33,6 +33,8 @@ require 'tasks/list_task'
 require 'tasks/command_line_task'
 require 'tasks/jspec/jspec_runner'
 require 'tasks/jspec/jspec_parser'
+require 'tasks/coffeescript/coffeescript_runner'
+require 'tasks/coffeescript/coffeescript_parser'
 require 'tasks/javascript_lint/javascript_lint_runner'
 require 'tasks/javascript_lint/javascript_lint_parser'
 require 'tasks/rspec/rspec_runner'
@@ -98,6 +100,7 @@ module Loris
           
           tm = TaskManager.new(oc)
           tm.add(ListTask.new) if debug
+          tm.add(coffeescript_task(dir))
           tm.add(javascript_lint_task(dir))
           tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new)) unless is_windows
           tm.add(jsTestDriverTask(dir))
@@ -112,6 +115,17 @@ module Loris
           # Start!
           p.start
 
+        end
+        
+        def coffeescript_task(dir)
+          return CommandLineTask.new(
+            CoffeeScriptRunner.new(
+              'coffee',
+              dir,
+              ExtensionFilter.new(File, 'coffee')
+            ),
+            CoffeeScriptParser.new(dir)
+          )
         end
         
         # Refactor into factory
