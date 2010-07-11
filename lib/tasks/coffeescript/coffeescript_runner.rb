@@ -24,8 +24,9 @@ class CoffeeScriptRunner
     return output.join "\n"
   end
   
+  # TODO: Only return true if we can find the node binary
   def is_configured?(all_files)
-    @coffee_dirs = @coffeescript_dir_finder.find all_files
+    @coffee_dirs = (@coffeescript_dir_finder.find all_files).uniq
     return @coffee_dirs.length > 0
   end
   

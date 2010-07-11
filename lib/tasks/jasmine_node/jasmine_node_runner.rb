@@ -15,6 +15,7 @@ class JasmineNodeRunner
     return `#{@node} #{@spec_dir}/specs.js --noColor #{@dir}  2>&1`
   end
   
+  # TODO: Only return true if we can find the node binary
   def is_configured?(all_files)
     return true
   end

@@ -9,8 +9,8 @@ class JasmineNodeParser
 
     if summary_line.nil?
       # error
-      error_info = (detail + "\nUnknown Error!").to_a[0].strip
-      return :error, 'Error', error_info
+      error_info = detail.grep(/Error: /)  || ["Unknown Error!"]
+      return :error, 'Error', error_info[0].strip
     end
     
     if summary_line =~ /([1-9]+)\d*\s+failures?/
