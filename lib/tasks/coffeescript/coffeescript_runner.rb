@@ -1,11 +1,11 @@
 class CoffeeScriptRunner
   
-  def initialize(binary, dir, filter)
+  def initialize(binary, dir, filter, dir_finder)
     @binary = binary
     @dir = dir
     @filter = filter
+    @coffeescript_dir_finder = dir_finder
 
-    @coffee_dir = dir + '/coffee'
     @js_dir = dir + '/src'
   end
   
@@ -14,11 +14,19 @@ class CoffeeScriptRunner
   end
   
   def execute
-    return `#{@binary} --compile #{@coffee_dir} --output #{@js_dir}  2>&1`
+    output = []
+    
+    @coffee_dirs.each do |coffee_dir|
+      js_dir = coffee_dir.sub '/coffee-', '/'
+      output.push `#{@binary} --compile #{coffee_dir} --output #{js_dir}  2>&1`
+    end
+    
+    return output.join "\n"
   end
   
   def is_configured?(all_files)
-    return true
+    @coffee_dirs = @coffeescript_dir_finder.find all_files
+    return @coffee_dirs.length > 0
   end
   
   def should_run?(modified_files)

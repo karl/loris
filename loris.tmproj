@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>.gitignore</string>
+	<string>lib/directory_finder.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,8 +13,6 @@
 			<string>loris</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -23,40 +21,12 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>.gitignore</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>Rakefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>47</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>TODO</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>4</integer>
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
@@ -65,14 +35,14 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>lib/file_actioner.rb</key>
+		<key>lib/directory_finder.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -84,9 +54,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>39</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>35</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -98,9 +68,39 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>47</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>8</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+		</dict>
+		<key>lib/jasmine-node/specs.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -112,9 +112,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>20</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -149,100 +149,28 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>lib/task_manager.rb</key>
+		<key>lib/tasks/coffeescript/coffeescript_runner.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>36</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>lib/tasks/jasmine_node/jasmine_node_runner.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>23</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>2</integer>
-		</dict>
-		<key>lib/tasks/command_line_task.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>28</integer>
-				<key>line</key>
 				<integer>14</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>lib/tasks/javascript_lint/javascript_lint_parser.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>32</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>lib/tasks/javascript_lint/javascript_lint_runner.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>57</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>43</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>57</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-		</dict>
-		<key>lib/tasks/js_test_driver/js_test_driver_parser.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>30</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>lib/tasks/js_test_driver/js_test_driver_runner.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>61</integer>
-				<key>line</key>
-				<integer>16</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -281,12 +209,13 @@
 	<key>openDocuments</key>
 	<array>
 		<string>TODO</string>
-		<string>lib/file_actioner.rb</string>
-		<string>Rakefile</string>
-		<string>.gitignore</string>
 		<string>lib/loris.rb</string>
+		<string>lib/filters/ends_with_filter.rb</string>
+		<string>lib/directory_finder.rb</string>
 		<string>lib/file_finder.rb</string>
-		<string>lib/task_manager.rb</string>
+		<string>lib/tasks/coffeescript/coffeescript_runner.rb</string>
+		<string>lib/tasks/jasmine_node/jasmine_node_runner.rb</string>
+		<string>lib/jasmine-node/specs.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>

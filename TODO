@@ -1,10 +1,12 @@
+* Only run next task if first task completed successfully (e.g. don't run JSL on second round if CS failed on first round)
+
 * Keep track of number of tests run/files linted. Let user know if this drops
 
 * Desktop (AIR?) app with red/green indicator, and clickable filename links
 * Aptana/VS plugin with red/green indicator and clickable filename links?
 
 * Tidy Windows related if statements
-* Tidy JSL filename removing
+* Tidy JSL + CoffeeScript filename removing
 
 
 * JSpec not installed? (can require as gem)
@@ -12,7 +14,6 @@
 
 * Factories to create tasks
 
-* Deal with filesystem exceptions
 * jspec task (just modified files?)
 * javascript lint task (just modified files?)
 * separate thread (create new and kill old)

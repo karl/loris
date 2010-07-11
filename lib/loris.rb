@@ -18,10 +18,13 @@ require 'file_actioner'
 require 'task_manager'
 require 'pinger'
 
+require 'directory_finder'
+
 require 'filters/extension_filter'
 require 'filters/modified_filter'
 require 'filters/file_filter'
 require 'filters/ends_with_filter'
+require 'filters/starts_with_filter'
 
 require 'outputs/output_collection'
 require 'outputs/shell_output'
@@ -37,6 +40,8 @@ require 'tasks/coffeescript/coffeescript_runner'
 require 'tasks/coffeescript/coffeescript_parser'
 require 'tasks/javascript_lint/javascript_lint_runner'
 require 'tasks/javascript_lint/javascript_lint_parser'
+require 'tasks/jasmine_node/jasmine_node_runner'
+require 'tasks/jasmine_node/jasmine_node_parser'
 require 'tasks/rspec/rspec_runner'
 require 'tasks/rspec/rspec_parser'
 
@@ -102,6 +107,7 @@ module Loris
           tm.add(ListTask.new) if debug
           tm.add(coffeescript_task(dir))
           tm.add(javascript_lint_task(dir))
+          tm.add(jasmine_node_task(dir))
           tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new)) unless is_windows
           tm.add(jsTestDriverTask(dir))
           tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new))
@@ -122,16 +128,32 @@ module Loris
             CoffeeScriptRunner.new(
               'coffee',
               dir,
-              ExtensionFilter.new(File, 'coffee')
+              ExtensionFilter.new(File, 'coffee'),
+              DirectoryFinder.new(File, StartsWithFilter.new('coffee-'))
             ),
             CoffeeScriptParser.new(dir)
+          )
+        end
+        
+        def jasmine_node_task(dir)
+          node = '/usr/local/bin/node'
+          spec_dir = File.join(LIBDIR, 'jasmine-node')
+          
+          return CommandLineTask.new(
+            JasmineNodeRunner.new(
+              node,
+              spec_dir,
+              dir,
+              ExtensionFilter.new(File, 'js')
+            ),
+            JasmineNodeParser.new(dir)
           )
         end
         
         # Refactor into factory
         def javascript_lint_task(dir)
           is_windows = RUBY_PLATFORM =~ /mswin32/
-          binary = File.join(LIBDIR, 'javascript-lint' , is_windows ? 'jsl.exe' : 'jsl');
+          binary = File.join(LIBDIR, 'javascript-lint' , is_windows ? 'jsl.exe' : 'jsl')
           
           return CommandLineTask.new(
             JavascriptLintRunner.new(
