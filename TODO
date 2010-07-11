@@ -1,4 +1,6 @@
 * Only run next task if first task completed successfully (e.g. don't run JSL on second round if CS failed on first round)
+* Update to latest version of JS Test Driver
+* Update to latest version of Jasmine
 
 * Keep track of number of tests run/files linted. Let user know if this drops
 
