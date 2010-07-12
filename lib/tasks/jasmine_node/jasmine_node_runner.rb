@@ -17,7 +17,7 @@ class JasmineNodeRunner
   
   # TODO: Only return true if we can find the node binary
   def is_configured?(all_files)
-    spec_filter = StartsWithFilter.new(@dir)
+    spec_filter = StartsWithFilter.new(@dir + '/spec')
     return !(all_files.detect { |file| spec_filter.filter(file) }).nil?
   end
   
