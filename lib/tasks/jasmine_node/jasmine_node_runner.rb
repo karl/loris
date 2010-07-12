@@ -12,7 +12,7 @@ class JasmineNodeRunner
   end
   
   def execute
-    return `#{@node} #{@spec_dir}/specs.js --noColor #{@dir}  2>&1`
+    return `"#{@node}" "#{@spec_dir}/specs.js" --noColor "#{@dir}"  2>&1`
   end
   
   # TODO: Only return true if we can find the node binary

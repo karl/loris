@@ -18,7 +18,7 @@ class CoffeeScriptRunner
     
     @coffee_dirs.each do |coffee_dir|
       js_dir = coffee_dir.sub '/coffee-', '/'
-      output.push `#{@binary} --output #{js_dir} --compile #{coffee_dir}  2>&1`
+      output.push `#{@binary} --output "#{js_dir}" --compile "#{coffee_dir}"  2>&1`
     end
     
     return output.join "\n"
