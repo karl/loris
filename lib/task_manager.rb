@@ -17,7 +17,7 @@ class TaskManager
       task = @tasks[index]
 
       # Don't run if this task is after the last failed task
-      if @fail_index >= 0 && @fail_index < index
+      if task.is_configured?(files) && @fail_index >= 0 && @fail_index < index
         @output.add_result(@fail_result)
         break
       end

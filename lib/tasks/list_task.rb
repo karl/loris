@@ -31,4 +31,8 @@ class ListTask
     return detail
   end
   
+  def is_configured?(files)
+    return true
+  end
+  
 end

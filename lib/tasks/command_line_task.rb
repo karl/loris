@@ -24,5 +24,9 @@ class CommandLineTask
         :detail => detail
       }
   end
+  
+  def is_configured?(files)
+    return @runner.is_configured? files[:all]
+  end
     
 end
