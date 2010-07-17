@@ -9,7 +9,7 @@ class JasmineNodeParser
 
     if summary_line.nil?
       # error
-      error_info = detail.grep(/Error: /)[0]  || ["Unknown Error!"]
+      error_info = detail.grep(/Error: /)[0]  || "Unknown Error!"
       return :error, 'Error', error_info.strip
     end
     

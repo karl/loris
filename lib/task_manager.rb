@@ -73,7 +73,7 @@ class TaskManager
       :title => 'Task',
       :summary => 'Exception',
       :first => ex.message,
-      :detail => ex.backtrace
+      :detail => ex.message + "\n" + ex.backtrace.join("\n")
     }
   end
   

@@ -7,6 +7,7 @@ require 'rbconfig'
 require 'find'
 require 'Growl'
 require 'yaml'
+require 'json'
 require 'uri'
 
 
@@ -40,8 +41,11 @@ require 'tasks/coffeescript/coffeescript_runner'
 require 'tasks/coffeescript/coffeescript_parser'
 require 'tasks/javascript_lint/javascript_lint_runner'
 require 'tasks/javascript_lint/javascript_lint_parser'
+require 'tasks/jasmine_node/jasmine_node_config'
 require 'tasks/jasmine_node/jasmine_node_runner'
 require 'tasks/jasmine_node/jasmine_node_parser'
+require 'tasks/jasmine_node_coverage/jasmine_node_coverage_runner'
+require 'tasks/jasmine_node_coverage/js_coverage'
 require 'tasks/rspec/rspec_runner'
 require 'tasks/rspec/rspec_parser'
 
@@ -108,6 +112,7 @@ module Loris
           tm.add(coffeescript_task(dir))
           tm.add(javascript_lint_task(dir))
           tm.add(jasmine_node_task(dir))
+          tm.add(jasmine_node_coverage_task(dir))
           tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new)) unless is_windows
           tm.add(jsTestDriverTask(dir))
           tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new))
@@ -144,7 +149,28 @@ module Loris
               node,
               spec_dir,
               dir,
-              ExtensionFilter.new(File, 'js')
+              ExtensionFilter.new(File, 'js'),
+              JasmineNodeConfig.new(dir, JSON, File)
+            ),
+            JasmineNodeParser.new(dir)
+          )
+        end
+        
+        def jasmine_node_coverage_task(dir)
+          node = '/usr/local/bin/node'
+          spec_dir = File.join(LIBDIR, 'jasmine-node')
+
+          return CommandLineTask.new(
+            JasmineNodeCoverageRunner.new(
+              JasmineNodeRunner.new(
+                node,
+                spec_dir,
+                dir,
+                ExtensionFilter.new(File, 'js'),
+                JasmineNodeConfig.new(dir, JSON, File)
+              ),
+              JsCoverage.new("node-jscoverage"),
+              JasmineNodeConfig.new(dir, JSON, File)
             ),
             JasmineNodeParser.new(dir)
           )
