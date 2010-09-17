@@ -41,6 +41,8 @@ require 'tasks/coffeescript/coffeescript_runner'
 require 'tasks/coffeescript/coffeescript_parser'
 require 'tasks/javascript_lint/javascript_lint_runner'
 require 'tasks/javascript_lint/javascript_lint_parser'
+require 'tasks/google_lint/google_lint_runner'
+require 'tasks/google_lint/google_lint_parser'
 require 'tasks/jasmine_node/jasmine_node_config'
 require 'tasks/jasmine_node/jasmine_node_runner'
 require 'tasks/jasmine_node/jasmine_node_parser'
@@ -48,6 +50,9 @@ require 'tasks/jasmine_node_coverage/jasmine_node_coverage_runner'
 require 'tasks/jasmine_node_coverage/js_coverage'
 require 'tasks/rspec/rspec_runner'
 require 'tasks/rspec/rspec_parser'
+require 'tasks/closure_compiler/closure_compiler_config'
+require 'tasks/closure_compiler/closure_compiler_runner'
+require 'tasks/closure_compiler/closure_compiler_parser'
 
 
 include Config
@@ -111,11 +116,13 @@ module Loris
           tm.add(ListTask.new) if debug
           tm.add(coffeescript_task(dir))
           tm.add(javascript_lint_task(dir))
+          tm.add(google_lint_task(dir))
           tm.add(jasmine_node_task(dir))
           tm.add(jasmine_node_coverage_task(dir))
           tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new)) unless is_windows
           tm.add(jsTestDriverTask(dir))
           tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new))
+          tm.add(closure_compiler_task(dir))
 
           a = FileActioner.new(ff, tm)    
           
@@ -190,6 +197,38 @@ module Loris
             JavascriptLintParser.new(dir)
           )          
         end
+        
+        def google_lint_task(dir)
+          binary = File.join(LIBDIR, 'google-lint' , 'gjslint')
+          
+          return CommandLineTask.new(
+            GoogleLintRunner.new(
+              binary,
+              dir, 
+              ExtensionFilter.new(File, 'js')
+            ), 
+            GoogleLintParser.new(dir)
+          )          
+        end
+        
+        def closure_compiler_task(dir)
+          jar = File.join(LIBDIR, 'closure-compiler' , 'compiler.jar')
+          
+          return CommandLineTask.new(
+            ClosureCompilerRunner.new(
+              jar,
+              dir, 
+              ExtensionFilter.new(File, 'js'),
+              ClosureCompilerConfig.new(
+                dir, 
+                YAML, 
+                URI
+              )
+            ), 
+            ClosureCompilerParser.new(dir)
+          )          
+        end
+        
         
         # Will need to be refactored into a factory
         def jsTestDriverTask(dir)
