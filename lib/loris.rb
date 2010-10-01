@@ -220,7 +220,7 @@ module Loris
         end
         
         def closure_compiler_task(dir)
-          jar = File.join(LIBDIR, 'closure-compiler' , 'compiler.jar')
+          jar = File.join(LIBDIR, 'closure-compiler' , 'closure-compiler.jar')
           
           return CommandLineTask.new(
             ClosureCompilerRunner.new(
