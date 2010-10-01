@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Karl O'Keeffe"]
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
      "features/support/env.rb",
      "lib/always_continuer.rb",
      "lib/browser_finder.rb",
-     "lib/closure-compiler/compiler.jar",
+     "lib/closure-compiler/closure-compiler.jar",
      "lib/directory_finder.rb",
      "lib/file_actioner.rb",
      "lib/file_finder.rb",

@@ -6,6 +6,7 @@ class ClosureCompilerRunner
     @dir = dir
     @filter = filter
     @config = config
+    @output_file = ''
   end
   
   def name
@@ -15,6 +16,8 @@ class ClosureCompilerRunner
   def execute
     @config.reload
     conf = @config.conf
+    
+    @output_file = conf['js_output_file']
     
     input_params = ''
 
@@ -41,7 +44,7 @@ class ClosureCompilerRunner
   end
   
   def should_run?(modified_files)
-    return !(modified_files.detect { |file| @filter.filter(file) && file != @output }).nil? || modified_files.include?(@config_file)
+    return !(modified_files.detect { |file| @filter.filter(file) && file != @dir + '/' + @output_file }).nil? || modified_files.include?(@config_file)
   end
   
 end
