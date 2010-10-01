@@ -4,7 +4,6 @@ class ClosureCompilerRunner
     @jar = jar
     @config_file = dir + '/closure-compiler.yml'
     @dir = dir
-    @output = dir + '/application.js'
     @filter = filter
     @config = config
   end
@@ -34,7 +33,7 @@ class ClosureCompilerRunner
       end
     end
     
-    return `java -Xmx1024m -jar "#{@jar}" --compilation_level SIMPLE_OPTIMIZATIONS --summary_detail_level 3 #{input_params} --js_output_file #{@output} 2>&1`
+    return `java -Xmx1024m -jar "#{@jar}" #{input_params} 2>&1`
   end
   
   def is_configured?(all_files)

@@ -9,6 +9,7 @@ class FileActioner
   
   def run
     begin
+      num_tasks_run = 0
       files = @file_finder.find
     
       # Refactor this to the file_finder class
@@ -16,13 +17,15 @@ class FileActioner
       files[:filtered] = files[:filtered] | changes
     
       if (files[:filtered] != [])
-        @task_manager.run(files)
+        num_tasks_run = @task_manager.run(files)
       end
     
       @prev_all_files = files[:all]
     rescue Exception => e
       @task_manager.output_exception(e);
     end
+      
+    num_tasks_run > 0
   end
   
 end

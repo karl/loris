@@ -10,33 +10,22 @@ class GoogleLintParser
   end
   
   def parse_result(detail)
-    summary_line = detail.grep( /\d+\s+error.*,\s+\d+\s+warning.*/ )[0]
-    
-    if summary_line.nil?
-      # error
-      error_info = (detail + "\nUnknown Error!").to_a[0].strip
-      return :error, 'Error', error_info
+    summary_line = detail.grep( /Found \d+\s+error*/ )[0]
+
+    if not detail.grep( /no errors found./ )[0].nil?
+      return :success, 'All files are clean', ''
     end
     
     if summary_line =~ /([1-9]+)\d*\s+error/
       num_failures = $1
-      error_info = detail.grep(/\([0-9]+\):([^:]*)Error:/)[0].strip
-      return :failure, num_failures + ' Errors', strip_dir(error_info)
-    end
- 
-    if summary_line =~ /([1-9]+)\d*\s+warning/
-      num_failures = $1
-      error_info = detail.grep(/\([0-9]+\)/)[0].strip
-      return :warning, num_failures + ' Warnings', strip_dir(error_info)
+      error_info = detail.grep(/FILE/)[0].strip
+      file_name = /:(.+) -----/.match error_info.strip
+      return :failure, num_failures + ' Errors', strip_dir(file_name)
     end
     
-    # Detect path errors
-    path_error = detail.grep(/unable to resolve path/)[0]
-    if (!path_error.nil?)
-      return :error, 'Path Error', path_error
-    end
-    
-    return :success, 'All files are clean', ''
+    # error
+    error_info = (detail + "\nUnknown Error!").to_a[0].strip
+    return :error, 'Error', error_info
   end
   
   def strip_dir(text)
@@ -46,6 +35,7 @@ class GoogleLintParser
       text = text[(@dir.length + 1)..-1]
     end    
     
+    text
   end
   
 end

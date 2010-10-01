@@ -42,6 +42,7 @@ require 'tasks/coffeescript/coffeescript_parser'
 require 'tasks/javascript_lint/javascript_lint_runner'
 require 'tasks/javascript_lint/javascript_lint_parser'
 require 'tasks/google_lint/google_lint_runner'
+require 'tasks/google_lint/google_lint_config'
 require 'tasks/google_lint/google_lint_parser'
 require 'tasks/jasmine_node/jasmine_node_config'
 require 'tasks/jasmine_node/jasmine_node_runner'
@@ -200,12 +201,19 @@ module Loris
         
         def google_lint_task(dir)
           binary = File.join(LIBDIR, 'google-lint' , 'gjslint')
+          fix_style_binary = File.join(LIBDIR, 'google-lint' , 'fixjsstyle')
           
           return CommandLineTask.new(
             GoogleLintRunner.new(
               binary,
+              fix_style_binary,
               dir, 
-              ExtensionFilter.new(File, 'js')
+              ExtensionFilter.new(File, 'js'),
+              GoogleLintConfig.new(
+                dir, 
+                YAML, 
+                URI
+              )
             ), 
             GoogleLintParser.new(dir)
           )          
