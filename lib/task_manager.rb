@@ -48,6 +48,7 @@ class TaskManager
       
     end
     
+    @num_tasks_run    
   end
   
   def run_task(files, task)

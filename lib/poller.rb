@@ -7,9 +7,10 @@ class Poller
   end
   
   def start
+    ran = false
     while @continuer.continue?
-      @waiter.wait
-      @action.run
+      @waiter.wait unless ran
+      ran = @action.run
     end
   end
     

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.2.3"
+  s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Karl O'Keeffe"]
-  s.date = %q{2010-07-12}
+  s.date = %q{2010-10-01}
   s.default_executable = %q{loris}
   s.description = %q{Automatically run javascript unit tests}
   s.email = %q{loris@monket.net}
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
      "features/support/env.rb",
      "lib/always_continuer.rb",
      "lib/browser_finder.rb",
+     "lib/closure-compiler/closure-compiler.jar",
      "lib/directory_finder.rb",
      "lib/file_actioner.rb",
      "lib/file_finder.rb",
@@ -42,6 +43,8 @@ Gem::Specification.new do |s|
      "lib/filters/file_filter.rb",
      "lib/filters/modified_filter.rb",
      "lib/filters/starts_with_filter.rb",
+     "lib/google-lint/fixjsstyle",
+     "lib/google-lint/gjslint",
      "lib/icons/error.png",
      "lib/icons/failure.png",
      "lib/icons/info.png",
@@ -65,11 +68,20 @@ Gem::Specification.new do |s|
      "lib/poller.rb",
      "lib/sleep_waiter.rb",
      "lib/task_manager.rb",
+     "lib/tasks/closure_compiler/closure_compiler_config.rb",
+     "lib/tasks/closure_compiler/closure_compiler_parser.rb",
+     "lib/tasks/closure_compiler/closure_compiler_runner.rb",
      "lib/tasks/coffeescript/coffeescript_parser.rb",
      "lib/tasks/coffeescript/coffeescript_runner.rb",
      "lib/tasks/command_line_task.rb",
+     "lib/tasks/google_lint/google_lint_config.rb",
+     "lib/tasks/google_lint/google_lint_parser.rb",
+     "lib/tasks/google_lint/google_lint_runner.rb",
+     "lib/tasks/jasmine_node/jasmine_node_config.rb",
      "lib/tasks/jasmine_node/jasmine_node_parser.rb",
      "lib/tasks/jasmine_node/jasmine_node_runner.rb",
+     "lib/tasks/jasmine_node_coverage/jasmine_node_coverage_runner.rb",
+     "lib/tasks/jasmine_node_coverage/js_coverage.rb",
      "lib/tasks/javascript_lint/javascript_lint_parser.rb",
      "lib/tasks/javascript_lint/javascript_lint_runner.rb",
      "lib/tasks/js_test_driver/js_test_driver_config.rb",
@@ -103,7 +115,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/karl/loris}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Automatically run javascript unit tests}
   s.test_files = [
     "spec/file_actioner_spec.rb",
@@ -126,16 +138,19 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<json>, [">= 1.4.3"])
       s.add_runtime_dependency(%q<bind>, [">= 0.2.6"])
       s.add_runtime_dependency(%q<karl-growl>, [">= 1.0.6"])
       s.add_runtime_dependency(%q<extensions>, [">= 0.6.0"])
     else
+      s.add_dependency(%q<json>, [">= 1.4.3"])
       s.add_dependency(%q<bind>, [">= 0.2.6"])
       s.add_dependency(%q<karl-growl>, [">= 1.0.6"])
       s.add_dependency(%q<extensions>, [">= 0.6.0"])
     end
   else
+    s.add_dependency(%q<json>, [">= 1.4.3"])
     s.add_dependency(%q<bind>, [">= 0.2.6"])
     s.add_dependency(%q<karl-growl>, [">= 1.0.6"])
     s.add_dependency(%q<extensions>, [">= 0.6.0"])
