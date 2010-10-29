@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>lib/tasks/google_lint/google_lint_runner.rb</string>
+	<string>lib/loris.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,19 +21,49 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Rakefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>lib/loris.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>31</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>208</integer>
+				<integer>213</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>177</integer>
+			<integer>181</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>213</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>213</integer>
+			</dict>
 		</dict>
 		<key>lib/outputs/growl_output.rb</key>
 		<dict>
@@ -68,28 +98,90 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>41</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>9</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
 		</dict>
 		<key>lib/tasks/closure_compiler/closure_compiler_runner.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>58</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>38</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>58</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+		</dict>
+		<key>lib/tasks/coffeescript/coffeescript_runner.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
 		</dict>
 		<key>lib/tasks/google_lint/google_lint_config.rb</key>
 		<dict>
@@ -133,6 +225,36 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>lib/tasks/javascript_lint/javascript_lint_runner.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>70</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+		</dict>
 		<key>lib/tasks/list_task.rb</key>
 		<dict>
 			<key>caret</key>
@@ -141,6 +263,20 @@
 				<integer>61</integer>
 				<key>line</key>
 				<integer>13</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>loris.gemspec</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -165,11 +301,15 @@
 	<key>openDocuments</key>
 	<array>
 		<string>lib/loris.rb</string>
+		<string>loris.gemspec</string>
 		<string>lib/tasks/google_lint/google_lint_runner.rb</string>
+		<string>Rakefile</string>
 		<string>lib/tasks/google_lint/google_lint_parser.rb</string>
 		<string>lib/tasks/closure_compiler/closure_compiler_config.rb</string>
 		<string>lib/tasks/google_lint/google_lint_config.rb</string>
 		<string>lib/tasks/closure_compiler/closure_compiler_runner.rb</string>
+		<string>lib/tasks/coffeescript/coffeescript_runner.rb</string>
+		<string>lib/tasks/javascript_lint/javascript_lint_runner.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
