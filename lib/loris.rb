@@ -51,6 +51,8 @@ require 'tasks/jasmine_node_coverage/jasmine_node_coverage_runner'
 require 'tasks/jasmine_node_coverage/js_coverage'
 require 'tasks/rspec/rspec_runner'
 require 'tasks/rspec/rspec_parser'
+require 'tasks/jasmine_ci/jasmine_ci_runner'
+require 'tasks/jasmine_ci/jasmine_ci_parser'
 require 'tasks/closure_compiler/closure_compiler_config'
 require 'tasks/closure_compiler/closure_compiler_runner'
 require 'tasks/closure_compiler/closure_compiler_parser'
@@ -123,6 +125,7 @@ module Loris
           tm.add(CommandLineTask.new(JSpecRunner.new(dir, ExtensionFilter.new(File, 'js')), JSpecParser.new)) unless is_windows
           tm.add(jsTestDriverTask(dir))
           tm.add(CommandLineTask.new(RSpecRunner.new(dir, ExtensionFilter.new(File, 'rb'), EndsWithFilter.new('_spec.rb')), RSpecParser.new))
+          tm.add(CommandLineTask.new(JasmineCIRunner.new(dir, ExtensionFilter.new(File, 'js')), JasmineCIParser.new))
           tm.add(closure_compiler_task(dir))
 
           a = FileActioner.new(ff, tm)
@@ -245,7 +248,7 @@ module Loris
           require 'tasks/js_test_driver/js_test_driver_config'
           require 'tasks/js_test_driver/js_test_driver_server'
 
-          jar = File.join(LIBDIR, 'js-test-driver/JsTestDriver-1.2.jar')
+          jar = File.join(LIBDIR, 'js-test-driver/JsTestDriver-1.3.2.jar')
           is_windows = RUBY_PLATFORM =~ /mswin32/
 
           if is_windows

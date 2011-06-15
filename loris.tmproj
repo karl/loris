@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>lib/tasks/google_lint/google_lint_runner.rb</string>
+	<string>lib/jasmine-node/specs.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -193,20 +193,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>lib/tasks/google_lint/google_lint_runner.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>24</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>lib/tasks/jasmine_node/jasmine_node_config.rb</key>
 		<dict>
 			<key>caret</key>
@@ -329,15 +315,6 @@
 		<string>lib/jasmine-node/specs.js</string>
 		<string>lib/tasks/jasmine_node/jasmine_node_parser.rb</string>
 		<string>lib/tasks/jasmine_node/jasmine_node_runner.rb</string>
-		<string>loris.gemspec</string>
-		<string>lib/tasks/google_lint/google_lint_runner.rb</string>
-		<string>Rakefile</string>
-		<string>lib/tasks/google_lint/google_lint_parser.rb</string>
-		<string>lib/tasks/closure_compiler/closure_compiler_config.rb</string>
-		<string>lib/tasks/google_lint/google_lint_config.rb</string>
-		<string>lib/tasks/closure_compiler/closure_compiler_runner.rb</string>
-		<string>lib/tasks/coffeescript/coffeescript_runner.rb</string>
-		<string>lib/tasks/javascript_lint/javascript_lint_runner.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
