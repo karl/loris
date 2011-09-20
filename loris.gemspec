@@ -5,15 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loris}
-  s.version = "0.5.0"
+  s.version = "0.5.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Karl O'Keeffe"]
-  s.date = %q{2011-06-15}
-  s.default_executable = %q{loris}
+  s.authors = [%q{Karl O'Keeffe}]
+  s.date = %q{2011-09-20}
   s.description = %q{Automatically run javascript unit tests}
   s.email = %q{loris@monket.net}
-  s.executables = ["loris"]
+  s.executables = [%q{loris}]
   s.extra_rdoc_files = [
     "README.rdoc",
     "TODO"
@@ -115,28 +114,11 @@ Gem::Specification.new do |s|
     "spec/tasks/jspec/jspec_runner_spec.rb"
   ]
   s.homepage = %q{http://github.com/karl/loris}
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
   s.summary = %q{Automatically run javascript unit tests}
-  s.test_files = [
-    "spec/file_actioner_spec.rb",
-    "spec/file_finder_spec.rb",
-    "spec/filters/ends_with_filter_spec.rb",
-    "spec/filters/file_filter_spec.rb",
-    "spec/filters/modified_filter_spec.rb",
-    "spec/growl_output_spec.rb",
-    "spec/list_task_spec.rb",
-    "spec/poller_spec.rb",
-    "spec/shell_output_spec.rb",
-    "spec/task_manager_spec.rb",
-    "spec/tasks/javascript_lint/javascript_lint_runner_spec.rb",
-    "spec/tasks/js_test_driver/js_test_driver_runner_spec.rb",
-    "spec/tasks/jspec/jspec_parser_spec.rb",
-    "spec/tasks/jspec/jspec_runner_spec.rb"
-  ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
